@@ -17,7 +17,7 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private Integer role;
+    private String role;
     private Integer status;
 
     public int getUserId() {
@@ -52,11 +52,11 @@ public class User {
         this.password = password;
     }
 
-    public Integer getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
