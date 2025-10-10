@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="" />
+    <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="Updated Entities">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/EnrollmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Lesson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Progress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/RoleType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/EnrollmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/AdminService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/LearnerService.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,12 +62,13 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/poojarani/IdeaProjects/skillpilot&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/praveenbansal/IdeaProjects/skillpilot&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.thoughtworks.skillpilot.repository" />
       <recent name="com.thoughtworks.skillpilot.model" />
     </key>
   </component>
@@ -61,6 +80,19 @@
       <option name="presentableId" value="Default" />
       <updated>1759944697554</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated Entities">
+      <option name="closed" value="true" />
+      <created>1760026681245</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1760026681245</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated Entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Entities" />
   </component>
 </project>

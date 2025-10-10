@@ -1,9 +1,8 @@
 package com.thoughtworks.skillpilot.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 
 @Entity
@@ -12,13 +11,14 @@ public class User {
 
 
     @Id
-    private int  userId;
+    private int userId;
     @Column(name = "user_name")
     private String username;
     private String email;
     private String password;
     private String role;
     private Integer status;
+
 
     public int getUserId() {
         return userId;
@@ -67,6 +67,18 @@ public class User {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    
+
+    public Set<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(Set<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Enrollment> enrollments;
+
+
 
 }

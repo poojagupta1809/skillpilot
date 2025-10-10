@@ -25,6 +25,12 @@ public class CourseService {
     }
 
     public List<Course> getAllCourses() {
+
+        return null;
+    }
+
+    public List<Course> getFilteredCourses(String topic, String difficultyLevel,String instructorName) {
+
         return null;
     }
 
