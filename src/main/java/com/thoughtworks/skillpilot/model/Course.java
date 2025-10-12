@@ -19,7 +19,18 @@ public class Course {
 
 
     private String description;
-    private Integer difficultyLevel;
+    private String difficultyLevel;
+
+    public Course() {
+    }
+
+    public Course(int courseId, String topic, String instructor, String description, String difficultyLevel) {
+        this.courseId = courseId;
+        this.topic = topic;
+        this.instructor = instructor;
+        this.description = description;
+        this.difficultyLevel = difficultyLevel;
+    }
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Enrollment> enrollments;
@@ -51,14 +62,13 @@ public class Course {
     }
 
 
-    public Integer getDifficultyLevel() {
+    public String getDifficultyLevel() {
         return difficultyLevel;
     }
 
-    public void setDifficultyLevel(Integer difficultyLevel) {
+    public void setDifficultyLevel(String difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
     }
-
 
     public String getDescription() {
         return description;
