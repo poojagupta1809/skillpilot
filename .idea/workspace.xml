@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="Updated MVC strcuture">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/DTO/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/CourseServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/UserServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/model/UserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/service/UserServiceImplTest.java" afterDir="false" />
+    <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="US-17 | creating CI yml">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/RoleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/RoleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,13 +184,31 @@
       <option name="project" value="LOCAL" />
       <updated>1760118052889</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="US-17 | Register user with admin or learner role">
+      <option name="closed" value="true" />
+      <created>1760296920897</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760296920897</updated>
+    </task>
+    <task id="LOCAL-00004" summary="US-17 | creating CI yml">
+      <option name="closed" value="true" />
+      <created>1760297622738</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760297622738</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated Entities" />
     <MESSAGE value="Updated MVC strcuture" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated MVC strcuture" />
+    <MESSAGE value="US-17 | Register user with admin or learner role" />
+    <MESSAGE value="US-17 | creating CI yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="US-17 | creating CI yml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
