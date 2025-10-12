@@ -18,6 +18,8 @@ public class User {
     private String password;
     private String role;
     private Integer status;
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Enrollment> enrollments;
 
 
     public int getUserId() {
@@ -68,16 +70,14 @@ public class User {
         this.status = status;
     }
 
-    public Set<Enrollment> getEnrollments() {
-        return enrollments;
-    }
+//    public Set<Enrollment> getEnrollments() {
+//        return enrollments;
+//    }
+//
+//    public void setEnrollments(Set<Enrollment> enrollments) {
+//        this.enrollments = enrollments;
+//    }
 
-    public void setEnrollments(Set<Enrollment> enrollments) {
-        this.enrollments = enrollments;
-    }
-
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Enrollment> enrollments;
 
 
 

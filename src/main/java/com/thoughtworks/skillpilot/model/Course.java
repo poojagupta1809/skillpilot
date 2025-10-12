@@ -1,6 +1,9 @@
 package com.thoughtworks.skillpilot.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Set;
 
@@ -11,13 +14,16 @@ public class Course {
 
 
     @Id
-    private int courseId;
+    @GeneratedValue
+    private Integer courseId;
 
     @Column(name = "course_title")
+    @NotBlank(message = "topic is required")
+    @Size(min = 2, max = 100, message = "topic must be between 2 and 100 characters")
     private String topic;
+    @Size(min = 2, max = 100, message = " instructor must be between 2 and 100 characters")
     private String instructor;
-
-
+    @Size(min = 2, max = 255, message = "description must be between 2 and 255 characters")
     private String description;
     private Integer difficultyLevel;
 
@@ -25,11 +31,11 @@ public class Course {
     private Set<Enrollment> enrollments;
 
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 
@@ -41,7 +47,6 @@ public class Course {
         this.topic = topic;
     }
 
-
     public String getInstructor() {
         return instructor;
     }
@@ -50,7 +55,6 @@ public class Course {
         this.instructor = instructor;
     }
 
-
     public Integer getDifficultyLevel() {
         return difficultyLevel;
     }
@@ -58,7 +62,6 @@ public class Course {
     public void setDifficultyLevel(Integer difficultyLevel) {
         this.difficultyLevel = difficultyLevel;
     }
-
 
     public String getDescription() {
         return description;
@@ -75,7 +78,6 @@ public class Course {
     public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
-
 
 
 }
