@@ -30,7 +30,6 @@ public class CourseService {
     }
 
     public List<Course> getFilteredCourses(String topic, String difficultyLevel,String instructorName) {
-
         return null;
     }
 

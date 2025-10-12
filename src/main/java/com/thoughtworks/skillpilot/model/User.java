@@ -68,16 +68,16 @@ public class User {
         this.status = status;
     }
 
-    public Set<Enrollment> getEnrollments() {
-        return enrollments;
-    }
+//    public Set<Enrollment> getEnrollments() {
+//        return enrollments;
+//    }
 
-    public void setEnrollments(Set<Enrollment> enrollments) {
-        this.enrollments = enrollments;
-    }
+//    public void setEnrollments(Set<Enrollment> enrollments) {
+//        this.enrollments = enrollments;
+//    }
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Enrollment> enrollments;
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Enrollment> enrollments;
 
 
 
