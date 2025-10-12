@@ -12,7 +12,7 @@ public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer enrollment_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -47,12 +47,12 @@ public class Enrollment {
     }
 
     // Getters and Setters
-    public Integer getId() {
-        return id;
+    public Integer getEnrollment_id() {
+        return enrollment_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setEnrollment_id(Integer id) {
+        this.enrollment_id = id;
     }
 
     public User getUser() {

@@ -14,6 +14,14 @@ public class Role {
     @Column(length = 20)
     private RoleType name;
 
+    public Role(RoleType name) {
+        this.name = name;
+    }
+
+    public Role() {
+        // Default constructor required by JPA
+    }
+
     public RoleType getName() {
         return name;
     }
