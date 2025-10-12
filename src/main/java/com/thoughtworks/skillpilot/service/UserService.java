@@ -1,34 +1,11 @@
 package com.thoughtworks.skillpilot.service;
 
-
 import com.thoughtworks.skillpilot.model.User;
-import com.thoughtworks.skillpilot.repository.RoleRepository;
-import com.thoughtworks.skillpilot.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
-@Service
-public class UserService {
+public interface UserService {
+    User registerNewUser(String username, String password, String email, String roleName);
 
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
+    User addAdmin(String username, String password, String email);
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
-
-    public User registerNewUser(String username, String password, String roleName) {
-        return null;
-    }
-
-    public User addAdmin(String username, String password) {
-        return registerNewUser(username, password, "ADMIN");
-    }
-
-    public User addLearner(String username, String password) {
-        return registerNewUser(username, password, "LEARNER");
-    }
+    User addLearner(String username, String password, String email);
 }
