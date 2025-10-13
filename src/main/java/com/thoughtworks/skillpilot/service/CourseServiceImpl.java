@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-// Course Service
 @Service
 public class CourseServiceImpl implements CourseService {
 
@@ -29,13 +28,31 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public List<Course> getAllCourses() {
 
-        return null;
+        return courseRepository.findAll();
     }
 
     @Override
     public List<Course> getFilteredCourses(String topic, String difficultyLevel, String instructorName) {
 
-        return null;
+        boolean hasTopic = topic != null && !topic.isEmpty();
+        boolean hasDifficulty = difficultyLevel != null && !difficultyLevel.isEmpty();
+        boolean hasInstructor = instructorName != null && !instructorName.isEmpty();
+
+        if (hasTopic && hasDifficulty && hasInstructor) {
+            return courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(topic, instructorName, difficultyLevel);
+        } else if (hasTopic && hasDifficulty) {
+            return courseRepository.findByTopicIgnoreCaseAndDifficultyLevelIgnoreCase(topic, difficultyLevel);
+        } else if (hasTopic && hasInstructor) {
+            return courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCase(topic, instructorName);
+        } else if (hasDifficulty && hasInstructor) {
+            return courseRepository.findByInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(instructorName, difficultyLevel);
+        } else if (hasTopic) {
+            return courseRepository.findByTopicIgnoreCase(topic);
+        } else if (hasInstructor) {
+            return courseRepository.findByInstructorIgnoreCase(instructorName);
+        } else {
+            return courseRepository.findAll();
+        }
     }
 
     @Override
