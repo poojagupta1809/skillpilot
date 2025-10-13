@@ -2,24 +2,45 @@ package com.thoughtworks.skillpilot.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private int userId;
     @Column(name = "user_name")
     private String username;
     private String email;
     private String password;
-    private String role;
     private Integer status;
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Enrollment> enrollments;
+
+    @OneToMany(mappedBy = "enrollment_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Enrollment> enrollments;
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.PERSIST) // Eagerly load roles with the user
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+
+    public User(String username,String password) {
+        this.password = password;
+        this.username = username;
+    }
+
+    public User() {
+
+    }
 
 
     public int getUserId() {
@@ -54,14 +75,6 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -70,13 +83,20 @@ public class User {
         this.status = status;
     }
 
-//    public Set<Enrollment> getEnrollments() {
-//        return enrollments;
-//    }
-//
-//    public void setEnrollments(Set<Enrollment> enrollments) {
-//        this.enrollments = enrollments;
-//    }
+    public Set<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(Set<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
 
 
