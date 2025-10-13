@@ -14,4 +14,6 @@ public interface CourseService {
     List<Course> getFilteredCourses(String topic, String difficultyLevel, String instructorName);
 
     Course getCourseById(int courseId);
+
+    Course updateCourse(int id, Course course);
 }
