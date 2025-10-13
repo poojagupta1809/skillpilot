@@ -1,16 +1,23 @@
 package com.thoughtworks.skillpilot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "lessons")
+@Table(name = "lesson")
 public class Lesson {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int lessonId;
 
     @Column(nullable = false)
+    @NotBlank(message = "Lesson title is required")
+    @Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
     private String title;
 
     private String content;
@@ -20,6 +27,7 @@ public class Lesson {
 
     @ManyToOne(fetch = FetchType.LAZY) // Many lessons can belong to one course
     @JoinColumn(name = "course_id", nullable = false) // Foreign key to Course entity
+    @JsonBackReference
     private Course course;
 
     // Constructors
@@ -28,12 +36,14 @@ public class Lesson {
 
 
     // Getters and Setters
-    public Integer getId() {
-        return id;
+
+
+    public int getLessonId() {
+        return lessonId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setLessonId(int lessonId) {
+        this.lessonId = lessonId;
     }
 
     public String getTitle() {
@@ -72,7 +82,7 @@ public class Lesson {
     @Override
     public String toString() {
         return "Lesson{" +
-                "id=" + id +
+                "id=" + lessonId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
