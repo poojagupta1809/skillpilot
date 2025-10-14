@@ -19,6 +19,11 @@ public class Progress {
 
     private boolean isCompleted;
 
+    @ManyToOne
+    @JoinColumn(name = "lesson_id", nullable = false)
+    private Lesson lesson;
+
+
     public Progress(boolean isCompleted, int completionPercentage, Enrollment enrollment) {
         this.isCompleted = isCompleted;
         this.completionPercentage = completionPercentage;
@@ -56,5 +61,13 @@ public class Progress {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 }

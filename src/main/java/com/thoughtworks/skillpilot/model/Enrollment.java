@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
+
 import java.util.Set;
 
 @Entity
@@ -32,7 +32,12 @@ public class Enrollment {
     private LocalDateTime enrollmentDate = LocalDateTime.now();
     private LocalDateTime completionDate;
 
+    @Column(name = "completion_percentage", columnDefinition = "integer default 0")
+    private Integer completionPercentage;
 
+
+    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Progress> enrollmentProgresses;
 
     // Constructors
     public Enrollment() {
@@ -93,4 +98,19 @@ public class Enrollment {
         this.enrollmentDate = enrollmentDate;
     }
 
+    public Integer getCompletionPercentage() {
+        return completionPercentage;
+    }
+
+    public void setCompletionPercentage(Integer completionPercentage) {
+        this.completionPercentage = completionPercentage;
+    }
+
+    public Set<Progress> getEnrollmentProgresses() {
+        return enrollmentProgresses;
+    }
+
+    public void setEnrollmentProgresses(Set<Progress> enrollmentProgresses) {
+        this.enrollmentProgresses = enrollmentProgresses;
+    }
 }
