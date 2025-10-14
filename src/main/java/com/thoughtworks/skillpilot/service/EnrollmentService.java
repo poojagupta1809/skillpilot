@@ -1,20 +1,24 @@
 package com.thoughtworks.skillpilot.service;
 
+import com.thoughtworks.skillpilot.exception.EnrollmentNotFoundException;
 import com.thoughtworks.skillpilot.model.Enrollment;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface EnrollmentService {
-    Enrollment enrollLearnernCourse(Integer learnerId, Integer courseId);
+public interface EnrollmentService  {
 
-    Optional<Enrollment> getEnrollmentById(Integer id);
+    public Enrollment enrollLearnerInCourse(int userId, int courseId);
 
-    List<Enrollment> getAllEnrollments();
 
-    void deleteEnrollment(Integer id);
+    public boolean unenrollLearnerFromCourse(int userId, int courseId) throws EnrollmentNotFoundException;
 
-    void viewProgressPercentage(Integer learnerId);
+    public List<Enrollment> getEnrollmentsByCourse(int courseId);
 
-    void viewEnrollementsByCourse();
+    public List<Enrollment> getEnrollmentsByUser(int userId);
+    public Optional<Enrollment> getEnrollmentById(Integer id);
+    public List<Enrollment> getAllEnrollments();
+    public void deleteEnrollmentsByCourse(int courseId); // Admin deletes all enrollments for a course
+
+    public  void deleteEnrollmentByUserAndCourse(int userId, int courseId) throws EnrollmentNotFoundException;// Admin removes a specific learner
 }

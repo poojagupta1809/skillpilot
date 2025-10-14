@@ -21,7 +21,7 @@ public class User {
     private String password;
     private Integer status;
 
-    @OneToMany(mappedBy = "enrollment_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "enrollmentId", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Enrollment> enrollments;
 
 
