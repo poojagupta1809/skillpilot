@@ -38,6 +38,14 @@ public class GlobalExceptionHandler  {
         error.put("error", e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(CourseAlreadyExistException.class)
+    public ResponseEntity<Map<String, String>> CourseAlreadyExistException(CourseAlreadyExistException e) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(LessonNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleLessonNotFoundException(LessonNotFoundException e) {
         Map<String, String> error = new HashMap<>();
