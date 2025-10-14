@@ -9,29 +9,39 @@ public class Progress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     // ManyToOne relationship with Enrollment
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "enrollment_id", nullable = false)
     private Enrollment enrollment;
-
-    private int completionPercentage;
+    @ManyToOne
+    @JoinColumn(name = "lesson_id", nullable = false)
+    private Lesson lesson;
 
     private boolean isCompleted;
 
-    public Progress(boolean isCompleted, int completionPercentage, Enrollment enrollment) {
-        this.isCompleted = isCompleted;
-        this.completionPercentage = completionPercentage;
+public Progress()
+{
+
+}
+    public Progress( Enrollment enrollment, Lesson lesson, boolean isCompleted) {
+
         this.enrollment = enrollment;
+        this.lesson = lesson;
+        this.isCompleted = isCompleted;
     }
 
-    // Default constructor required by JPA
-    protected Progress() {
 
-    }
 
     public Integer getId() {
         return id;
+    }
+
+    public Lesson getLesson() {
+        return lesson;
+    }
+
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 
     public Enrollment getEnrollment() {
@@ -42,13 +52,6 @@ public class Progress {
         this.enrollment = enrollment;
     }
 
-    public int getCompletionPercentage() {
-        return completionPercentage;
-    }
-
-    public void setCompletionPercentage(int completionPercentage) {
-        this.completionPercentage = completionPercentage;
-    }
 
     public boolean isCompleted() {
         return isCompleted;
