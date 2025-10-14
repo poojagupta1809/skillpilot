@@ -141,8 +141,7 @@ class CourseServiceImplTest {
     @Test
     public void removeCourseById_existingId_shouldDelete() {
         sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
-        when(courseRepository.findById(1)).thenReturn(Optional.of(sampleCourse));
-
+        when(courseRepository.existsById(1)).thenReturn(true);
         courseServiceImpl.removeCourseById(1);
 
         verify(courseRepository, times(1)).deleteById(1);
@@ -150,7 +149,7 @@ class CourseServiceImplTest {
 
     @Test
     public void removeCourseById_notFound_shouldThrowException() {
-        when(courseRepository.findById(1)).thenReturn(Optional.empty());
+        when(courseRepository.existsById(1)).thenReturn(false);
 
         assertThrows(CourseNotFoundException.class, () -> {
             courseServiceImpl.removeCourseById(1);
