@@ -4,6 +4,7 @@ package com.thoughtworks.skillpilot.controller;
 
 import com.thoughtworks.skillpilot.DTO.UserDTO;
 import com.thoughtworks.skillpilot.service.UserServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +19,13 @@ public class UserController {
     }
 
     @PostMapping("/register/admin")
-    public ResponseEntity<String> registerAdmin(UserDTO userDTO) {
+    public ResponseEntity<String> registerAdmin(@Valid @RequestBody UserDTO userDTO) {
         userService.addAdmin(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail());
         return ResponseEntity.ok("Admin registered successfully!");
     }
 
     @PostMapping("/register/learner")
-    public ResponseEntity<String> registerLearner(UserDTO userDTO) {
+    public ResponseEntity<String> registerLearner(@Valid @RequestBody UserDTO userDTO) {
         userService.addLearner(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail());
         return ResponseEntity.ok("Learner registered successfully!");
     }
