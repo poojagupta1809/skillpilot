@@ -5,7 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="US-17 | creating CI yml">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/ProgressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/ProgressAlreadyExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/ProgressNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/ProgressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/LessonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/ProgressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/ProgressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/Service/ProgressServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/SkillpilotApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/LessonController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/ProgressController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/dto/CourseDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/dto/LessonDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/CourseNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/LessonNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/ProgressAlreadyExistException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/ProgressNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Course.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Lesson.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Progress.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Role.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/RoleType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/LessonRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/ProgressRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/CourseService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/LessonService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/LessonServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/ProgressService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/ProgressServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/SkillpilotApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/model/UserTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/CourseServiceImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/LessonServiceTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/ProgressServiceImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/UserServiceImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/LessonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/LessonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Course.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Lesson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Lesson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/LessonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/LessonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/Service/LessonServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/Service/LessonServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +71,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -51,15 +107,23 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.SkillpilotApplication.executor": "Run",
+    "JUnit.LessonServiceTest.executor": "Run",
+    "JUnit.ProgressServiceImplTest.testCreateProgressAlreadyExists.executor": "Run",
+    "JUnit.ProgressServiceImplTest.testCreateProgressEnrollmentNotFound.executor": "Run",
+    "JUnit.ProgressServiceImplTest.testCreateProgressLessonNotFound.executor": "Run",
+    "JUnit.ProgressServiceImplTest.testCreateProgressSuccess.executor": "Run",
     "JUnit.UserControllerTest.executor": "Run",
     "JUnit.UserServiceImplTest.executor": "Run",
     "JUnit.UserServiceImplTest.registerNewUser_success.executor": "Run",
     "JUnit.UserTest.executor": "Run",
+    "JUnit.com in skillpilot.executor": "Run",
+    "JUnit.com.thoughtworks in skillpilot.executor": "Run",
+    "JUnit.com.thoughtworks.skillpilot.Service in skillpilot.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/enrollment",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dhanashreesonwane/Desktop/skillpilot",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -74,88 +138,82 @@
       <recent name="com.thoughtworks.skillpilot.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SkillpilotApplication">
-    <configuration name="SkillpilotApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.SkillpilotApplication" />
+  <component name="RunManager" selected="JUnit.java in skillpilot">
+    <configuration name="ProgressServiceImplTest.testCreateProgressAlreadyExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.*" />
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skillpilot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.controller.UserControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skillpilot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.service" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.service.UserServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceImplTest.registerNewUser_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skillpilot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.service" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.service.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="registerNewUser_success" />
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.Service.ProgressServiceImplTest" />
+      <option name="METHOD_NAME" value="testCreateProgressAlreadyExists" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProgressServiceImplTest.testCreateProgressLessonNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.model.*" />
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.model" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.model.UserTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.Service.ProgressServiceImplTest" />
+      <option name="METHOD_NAME" value="testCreateProgressLessonNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.thoughtworks in skillpilot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillpilot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.thoughtworks.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.thoughtworks" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.thoughtworks.skillpilot.Service in skillpilot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillpilot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="java in skillpilot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillpilot" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserServiceImplTest.registerNewUser_success" />
-        <item itemvalue="JUnit.UserServiceImplTest" />
-        <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="Application.SkillpilotApplication" />
+        <item itemvalue="JUnit.java in skillpilot" />
+        <item itemvalue="JUnit.com.thoughtworks in skillpilot" />
+        <item itemvalue="JUnit.com.thoughtworks.skillpilot.Service in skillpilot" />
+        <item itemvalue="JUnit.ProgressServiceImplTest.testCreateProgressAlreadyExists" />
+        <item itemvalue="JUnit.ProgressServiceImplTest.testCreateProgressLessonNotFound" />
       </list>
     </recent_temporary>
   </component>

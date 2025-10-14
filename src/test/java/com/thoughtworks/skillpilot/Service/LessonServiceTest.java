@@ -6,7 +6,7 @@ import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.model.Lesson;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
 import com.thoughtworks.skillpilot.repository.LessonRepository;
-import com.thoughtworks.skillpilot.service.LessonService;
+import com.thoughtworks.skillpilot.service.LessonServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -29,7 +29,7 @@ public class LessonServiceTest {
     private CourseRepository courseRepository;
 
     @InjectMocks
-    private LessonService lessonService;
+    private LessonServiceImpl lessonService;
 
 
     @BeforeEach
@@ -51,15 +51,9 @@ public class LessonServiceTest {
         savedLesson.setLessonId(1);
         savedLesson.setTitle("Spring Boot Intro");
         savedLesson.setCourse(course);
-
-        // Mock repository calls
         when(courseRepository.findById(courseId)).thenReturn(Optional.of(course));
         when(lessonRepository.save(any())).thenReturn(savedLesson);
-
-        // Call service method and assert
         assertEquals(savedLesson, lessonService.createLesson(courseId, lesson));
-
-        // Verify interactions
         verify(courseRepository, times(1)).findById(courseId);
         verify(lessonRepository, times(1)).save(any());
     }
@@ -79,31 +73,22 @@ public class LessonServiceTest {
     public void givenLessonIdAndUpdatedLesson_whenUpdateLesson_thenShouldReturnUpdatedLesson() {
         int lessonId = 1;
 
-        // Existing lesson in repository
         Lesson existingLesson = new Lesson();
         existingLesson.setLessonId(lessonId);
         existingLesson.setTitle("Old Title");
         existingLesson.setContent("Old Content");
 
-        // Updated lesson
         Lesson updatedLesson = new Lesson();
         updatedLesson.setTitle("New Title");
         updatedLesson.setContent("New Content");
-
-        // Lesson after saving
         Lesson savedLesson = new Lesson();
         savedLesson.setLessonId(lessonId);
         savedLesson.setTitle("New Title");
         savedLesson.setContent("New Content");
 
-        // Mock repository calls
         when(lessonRepository.findById(lessonId)).thenReturn(Optional.of(existingLesson));
         when(lessonRepository.save(existingLesson)).thenReturn(savedLesson);
-
-        // Call service method and assert
         assertEquals(savedLesson, lessonService.updateLesson(lessonId, updatedLesson));
-
-        // Verify interactions
         verify(lessonRepository, times(1)).findById(lessonId);
         verify(lessonRepository, times(1)).save(existingLesson);
     }
@@ -114,24 +99,14 @@ public class LessonServiceTest {
 
         Lesson updatedLesson = new Lesson();
         updatedLesson.setTitle("New Title");
-
-        // Mock repository to return empty
         when(lessonRepository.findById(lessonId)).thenReturn(Optional.empty());
-
-        // Expect exception
         assertThrows(LessonNotFoundException.class, () -> lessonService.updateLesson(lessonId, updatedLesson));
-
-        // Verify save is never called
         verify(lessonRepository, never()).save(any());
     }
     @Test
     public void givenCourseId_whenCourseExists_thenShouldReturnLessons() {
         int courseId = 1;
-
-        // Mock course exists
         when(courseRepository.existsById(courseId)).thenReturn(true);
-
-        // Mock lessons
         Lesson lesson1 = new Lesson();
         lesson1.setLessonId(1);
         lesson1.setTitle("Lesson 1");
@@ -143,11 +118,7 @@ public class LessonServiceTest {
         List<Lesson> lessons = List.of(lesson1, lesson2);
 
         when(lessonRepository.findByCourse_CourseId(courseId)).thenReturn(lessons);
-
-        // Call service method and assert
         assertEquals(lessons, lessonService.getLessonsByCourseId(courseId));
-
-        // Verify interactions
         verify(courseRepository, times(1)).existsById(courseId);
         verify(lessonRepository, times(1)).findByCourse_CourseId(courseId);
     }
@@ -155,14 +126,8 @@ public class LessonServiceTest {
     @Test
     public void givenCourseId_whenCourseDoesNotExist_thenShouldThrowException() {
         int courseId = 1;
-
-        // Mock course does not exist
         when(courseRepository.existsById(courseId)).thenReturn(false);
-
-        // Expect exception
         assertThrows(CourseNotFoundException.class, () -> lessonService.getLessonsByCourseId(courseId));
-
-        // Verify lessonRepository is never called
         verify(lessonRepository, never()).findByCourse_CourseId(anyInt());
     }
 
