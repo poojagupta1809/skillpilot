@@ -2,7 +2,7 @@
 package com.thoughtworks.skillpilot.controller;
 
 
-import com.thoughtworks.skillpilot.DTO.UserDTO;
+import com.thoughtworks.skillpilot.dto.UserDTO;
 import com.thoughtworks.skillpilot.service.UserServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
