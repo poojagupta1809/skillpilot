@@ -5,35 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="US-17 | creating CI yml">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/DTO/EnrollmentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/DuplicateEnrollmentException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/EnrollmentNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/UserNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/EnrollmentStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/EnrollmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/EnrollmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/Enrollment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/EnrollmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/EnrollmentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/EnrollmentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Course.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Course.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/RoleType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/RoleType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/CourseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/CourseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/UserService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/enrollment",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/dhanashreesonwane/Desktop/skillpilot",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -179,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SkillpilotApplication" />
-        <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserServiceImplTest" />
         <item itemvalue="JUnit.UserServiceImplTest.registerNewUser_success" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
+        <item itemvalue="JUnit.UserControllerTest" />
+        <item itemvalue="Application.SkillpilotApplication" />
       </list>
     </recent_temporary>
   </component>
