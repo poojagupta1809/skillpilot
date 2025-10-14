@@ -1,5 +1,7 @@
 package com.thoughtworks.skillpilot.service;
 
+import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
+import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class CourseServiceImplTest {
@@ -26,7 +29,7 @@ class CourseServiceImplTest {
     @InjectMocks
     private CourseServiceImpl courseServiceImpl;
 
-    private Course course1, course2;
+    private Course course1, course2, sampleCourse;
 
     @BeforeEach
     void setUp() {
@@ -101,5 +104,82 @@ class CourseServiceImplTest {
         assertEquals(course1, result.get(0));
         assertEquals(course2, result.get(1));
     }
+
+    @Test
+    public void createCourse_shouldSaveSuccessfully() {
+        sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
+        sampleCourse.setCourseId(null);
+        when(courseRepository.save(any(Course.class))).thenReturn(sampleCourse);
+
+        Course result = courseServiceImpl.createCourse(sampleCourse);
+
+        assertNotNull(result);
+        verify(courseRepository, times(1)).save(any(Course.class));
+    }
+
+    @Test
+    public void createCourse_existingId_shouldThrowException() {
+        sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
+        when(courseRepository.existsById(sampleCourse.getCourseId())).thenReturn(true);
+
+        assertThrows(CourseAlreadyExistException.class, () -> {
+            courseServiceImpl.createCourse(sampleCourse);
+        });
+    }
+
+    @Test
+    public void getAllCourses_shouldReturnList() {
+        sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
+        when(courseRepository.findAll()).thenReturn(List.of(sampleCourse));
+
+        List<Course> courses = courseServiceImpl.getAllCourses();
+
+        assertEquals(1, courses.size());
+        assertEquals("Spring", courses.get(0).getTopic());
+    }
+
+    @Test
+    public void removeCourseById_existingId_shouldDelete() {
+        sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
+        when(courseRepository.findById(1)).thenReturn(Optional.of(sampleCourse));
+
+        courseServiceImpl.removeCourseById(1);
+
+        verify(courseRepository, times(1)).deleteById(1);
+    }
+
+    @Test
+    public void removeCourseById_notFound_shouldThrowException() {
+        when(courseRepository.findById(1)).thenReturn(Optional.empty());
+
+        assertThrows(CourseNotFoundException.class, () -> {
+            courseServiceImpl.removeCourseById(1);
+        });
+    }
+
+    @Test
+    public void updateCourse_existingId_shouldUpdateFields() {
+        sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
+        Course updateRequest = new Course();
+        updateRequest.setDescription("Updated Description");
+
+        when(courseRepository.findById(1)).thenReturn(Optional.of(sampleCourse));
+        when(courseRepository.save(any(Course.class))).thenReturn(sampleCourse);
+
+        Course updated = courseServiceImpl.updateCourse(1, updateRequest);
+
+        assertEquals("Updated Description", updated.getDescription());
+        verify(courseRepository).save(sampleCourse);
+    }
+
+    @Test
+    public void updateCourse_notFound_shouldThrowException() {
+        when(courseRepository.findById(1)).thenReturn(Optional.empty());
+
+        assertThrows(CourseNotFoundException.class, () -> {
+            courseServiceImpl.updateCourse(1, new Course());
+        });
+    }
+
 
 }
