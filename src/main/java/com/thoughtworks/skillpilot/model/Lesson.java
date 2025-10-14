@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "lesson")
 public class Lesson {
@@ -29,6 +31,8 @@ public class Lesson {
     @JoinColumn(name = "course_id", nullable = false) // Foreign key to Course entity
     @JsonBackReference
     private Course course;
+    @OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Progress> progressList;
 
     // Constructors
     public Lesson() {
@@ -75,6 +79,14 @@ public class Lesson {
         return course;
     }
 
+    public List<Progress> getProgressList() {
+        return progressList;
+    }
+
+    public void setProgressList(List<Progress> progressList) {
+        this.progressList = progressList;
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }
@@ -86,7 +98,7 @@ public class Lesson {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
-                ", course=" + course +
+                ", courseId=" +course.getCourseId()+
                 '}';
     }
 }

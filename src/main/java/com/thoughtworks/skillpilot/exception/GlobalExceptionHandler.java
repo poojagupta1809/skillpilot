@@ -62,6 +62,14 @@ public class GlobalExceptionHandler  {
     public ResponseEntity<String> handleDuplicateEnrollment(DuplicateEnrollmentException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
+    @ExceptionHandler(ProgressAlreadyExistException.class)
+    public ResponseEntity<String> handleProgressAlreadyExistException(ProgressAlreadyExistException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
+    @ExceptionHandler(ProgressNotFoundException.class)
+    public ResponseEntity<String> handleProgressNotFoundException(ProgressNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneric(Exception e) {
