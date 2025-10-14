@@ -16,6 +16,7 @@ import java.util.List;
 public class CourseController {
 
     CourseService courseService;
+
     @Autowired
     public CourseController(CourseService courseService) {
 
@@ -28,16 +29,15 @@ public class CourseController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getCourse( ){
+    public ResponseEntity<?> getCourse() {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<?> addCourse(@Valid  @RequestBody Course course) {
+    public ResponseEntity<?> addCourse(@Valid @RequestBody Course course) {
         try {
             return new ResponseEntity<>(courseService.createCourse(course), HttpStatus.CREATED);
-        }
-        catch (CourseAlreadyExistException e){
+        } catch (CourseAlreadyExistException e) {
             return ResponseEntity
                     .status(HttpStatus.CONFLICT)
                     .body("User with this ID already exists!");
@@ -45,14 +45,13 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable  int id) {
+    public ResponseEntity<?> deleteProduct(@PathVariable int id) {
         courseService.removeCourseById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted Successfully");
     }
 
-
     @PatchMapping("/{id}")
-    public ResponseEntity<?>  editCourse(@PathVariable int id,@Valid @RequestBody Course course) {
+    public ResponseEntity<?> editCourse(@PathVariable int id, @Valid @RequestBody Course course) {
         Course updatedProduct = courseService.updateCourse(id, course);
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
