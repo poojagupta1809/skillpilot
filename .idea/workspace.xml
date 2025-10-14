@@ -138,7 +138,7 @@
       <recent name="com.thoughtworks.skillpilot.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.com.thoughtworks in skillpilot">
+  <component name="RunManager" selected="JUnit.java in skillpilot">
     <configuration name="ProgressServiceImplTest.testCreateProgressAlreadyExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
@@ -150,22 +150,6 @@
       <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
       <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.Service.ProgressServiceImplTest" />
       <option name="METHOD_NAME" value="testCreateProgressAlreadyExists" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProgressServiceImplTest.testCreateProgressEnrollmentNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skillpilot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.Service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.Service.ProgressServiceImplTest" />
-      <option name="METHOD_NAME" value="testCreateProgressEnrollmentNotFound" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -215,13 +199,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="java in skillpilot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillpilot" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in skillpilot" />
         <item itemvalue="JUnit.com.thoughtworks in skillpilot" />
         <item itemvalue="JUnit.com.thoughtworks.skillpilot.Service in skillpilot" />
         <item itemvalue="JUnit.ProgressServiceImplTest.testCreateProgressAlreadyExists" />
         <item itemvalue="JUnit.ProgressServiceImplTest.testCreateProgressLessonNotFound" />
-        <item itemvalue="JUnit.ProgressServiceImplTest.testCreateProgressEnrollmentNotFound" />
       </list>
     </recent_temporary>
   </component>
