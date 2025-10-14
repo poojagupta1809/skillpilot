@@ -1,5 +1,6 @@
 package com.thoughtworks.skillpilot.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -7,35 +8,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "enrollment")
+@Table(name = "enrollment",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "course_id"}))
 public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer enrollment_id;
+    private Integer enrollmentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_id", nullable = false)
+    @JsonBackReference
     private Course course;
 
-
-    // OneToMany relationship with Progress
-    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Progress> progressRecords = new HashSet<>();
+    private EnrollmentStatus status = EnrollmentStatus.ACTIVE;
 
 
     private LocalDateTime enrollmentDate = LocalDateTime.now();
-
-    // can do this way later for now putting a string type only,
-//    @Enumerated(EnumType.STRING)
-//    private CompletionStatus completionStatus = CompletionStatus.IN_PROGRESS;
+    private LocalDateTime completionDate;
 
 
-    private String completionStatus;
 
     // Constructors
     public Enrollment() {
@@ -47,32 +44,37 @@ public class Enrollment {
     }
 
     // Getters and Setters
-    public Integer getEnrollment_id() {
-        return enrollment_id;
+
+    public Integer getEnrollmentId() {
+        return enrollmentId;
     }
 
-    public void setEnrollment_id(Integer id) {
-        this.enrollment_id = id;
+    public void setEnrollmentId(Integer enrollmentId) {
+        this.enrollmentId = enrollmentId;
     }
 
     public User getUser() {
         return user;
     }
 
-    public String getCompletionStatus() {
-        return completionStatus;
-    }
-
-    public void setCompletionStatus(String completionStatus) {
-        this.completionStatus = completionStatus;
-    }
-
     public void setUser(User user) {
         this.user = user;
     }
 
-    public void setStudent(User user) {
-        this.user = user;
+    public EnrollmentStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(EnrollmentStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(LocalDateTime completionDate) {
+        this.completionDate = completionDate;
     }
 
     public Course getCourse() {
@@ -91,20 +93,4 @@ public class Enrollment {
         this.enrollmentDate = enrollmentDate;
     }
 
-    public Set<Progress> getProgressRecords() {
-        return progressRecords;
-    }
-
-    public void setProgressRecords(Set<Progress> progressRecords) {
-        this.progressRecords = progressRecords;
-    }
-
-
-    //public CompletionStatus getCompletionStatus() { return completionStatus; }
-    //public void setCompletionStatus(CompletionStatus completionStatus) { this.completionStatus = completionStatus; }
 }
-
-//enum CompletionStatus {
-//    IN_PROGRESS,
-//    COMPLETED
-//}
