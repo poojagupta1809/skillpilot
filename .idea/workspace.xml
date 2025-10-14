@@ -5,6 +5,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="US-17 | creating CI yml">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/ProgressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/ProgressAlreadyExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/exception/ProgressNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/repository/ProgressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/LessonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/ProgressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/service/ProgressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/Service/ProgressServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/SkillpilotApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/LessonController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/controller/ProgressController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/dto/CourseDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/dto/LessonDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/CourseNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/LessonNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/ProgressAlreadyExistException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/exception/ProgressNotFoundException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Course.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Lesson.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Progress.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/Role.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/RoleType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/model/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/LessonRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/ProgressRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/CourseService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/LessonService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/LessonServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/ProgressService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/ProgressServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/thoughtworks/skillpilot/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/SkillpilotApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/model/UserTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/CourseServiceImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/LessonServiceTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/ProgressServiceImplTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/thoughtworks/skillpilot/service/UserServiceImplTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
