@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f9e5eca-0b32-46d3-9492-66e4b3d13a2b" name="Changes" comment="US-17 | creating CI yml">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/Service/EnrollmentServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/thoughtworks/skillpilot/controller/EnrollmentControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,6 +53,10 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.SkillpilotApplication.executor": "Run",
+    "JUnit.EnrollmentControllerTest.enroll_success.executor": "Run",
+    "JUnit.EnrollmentControllerTest.enroll_userNotFound.executor": "Run",
+    "JUnit.EnrollmentControllerTest.executor": "Run",
+    "JUnit.EnrollmentServiceImplTest.executor": "Run",
     "JUnit.UserControllerTest.executor": "Run",
     "JUnit.UserServiceImplTest.executor": "Run",
     "JUnit.UserServiceImplTest.registerNewUser_success.executor": "Run",
@@ -88,7 +94,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EnrollmentControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
         <pattern>
@@ -97,53 +103,54 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.controller.UserControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.controller.EnrollmentControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EnrollmentControllerTest.enroll_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.service.*" />
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.service" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.service.UserServiceImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceImplTest.registerNewUser_success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="skillpilot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.service" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.service.UserServiceImplTest" />
-      <option name="METHOD_NAME" value="registerNewUser_success" />
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.controller.EnrollmentControllerTest" />
+      <option name="METHOD_NAME" value="enroll_success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EnrollmentControllerTest.enroll_userNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="skillpilot" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.thoughtworks.skillpilot.model.*" />
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.model" />
-      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.model.UserTest" />
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.controller.EnrollmentControllerTest" />
+      <option name="METHOD_NAME" value="enroll_userNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EnrollmentServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="skillpilot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.thoughtworks.skillpilot.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.thoughtworks.skillpilot.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.Service.EnrollmentServiceImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -151,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserTest" />
-        <item itemvalue="JUnit.UserServiceImplTest.registerNewUser_success" />
-        <item itemvalue="JUnit.UserServiceImplTest" />
-        <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="Application.SkillpilotApplication" />
+        <item itemvalue="JUnit.EnrollmentControllerTest" />
+        <item itemvalue="JUnit.EnrollmentControllerTest.enroll_userNotFound" />
+        <item itemvalue="JUnit.EnrollmentControllerTest.enroll_success" />
+        <item itemvalue="JUnit.EnrollmentServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
