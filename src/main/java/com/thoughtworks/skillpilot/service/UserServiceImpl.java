@@ -2,10 +2,8 @@ package com.thoughtworks.skillpilot.service;
 
 
 import com.thoughtworks.skillpilot.exception.UserAlreadyExists;
-import com.thoughtworks.skillpilot.model.Role;
 import com.thoughtworks.skillpilot.model.RoleType;
 import com.thoughtworks.skillpilot.model.User;
-import com.thoughtworks.skillpilot.repository.RoleRepository;
 import com.thoughtworks.skillpilot.repository.UserRepository;
 
 import org.springframework.stereotype.Service;
@@ -18,11 +16,9 @@ public class UserServiceImpl implements UserService {
 
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -36,35 +32,21 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = new User(username, password);
-        Set<Role> roles = new HashSet<>();
 
-        RoleType roleType;
+        RoleType roleType = null;
         try {
             roleType = RoleType.valueOf(roleName.toUpperCase());
+            user.setRole(roleType.name());
+
         } catch (IllegalArgumentException e) {
             throw new RuntimeException("Invalid role name: " + roleName);
         }
 
-        Optional<Role> roleOptional = roleRepository.findByName(roleType);
-        if (roleOptional.isPresent()) {
-            roles.add(roleOptional.get());
-        } else {
-            roles.add(new Role(roleType));
-        }
 
-        user.setRoles(roles);
         user.setEmail(email);
 
         return userRepository.save(user);
     }
 
-    @Override
-    public User addAdmin(String username, String password, String email) {
-        return registerNewUser(username, password,email, "ADMIN");
-    }
 
-    @Override
-    public User addLearner(String username, String password, String email) {
-        return registerNewUser(username, password, email,"LEARNER");
-    }
 }

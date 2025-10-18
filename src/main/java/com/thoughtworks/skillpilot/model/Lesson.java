@@ -32,8 +32,6 @@ public class Lesson {
     @JsonBackReference
     private Course course;
 
-    @OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Progress> progressList;
 
     // Constructors
     public Lesson() {
@@ -93,14 +91,6 @@ public class Lesson {
                 ", videoUrl='" + videoUrl + '\'' +
                 ", course=" + course +
                 '}';
-    }
-
-    public List<Progress> getProgressList() {
-        return progressList;
-    }
-
-    public void setProgressList(List<Progress> progressList) {
-        this.progressList = progressList;
     }
 
 }

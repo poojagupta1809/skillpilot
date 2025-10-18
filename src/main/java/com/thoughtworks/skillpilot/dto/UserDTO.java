@@ -7,11 +7,15 @@ import jakarta.validation.constraints.Size;
 
 public class UserDTO {
 
-    @NotBlank(message ="User name cannot be empty")
+    @NotBlank(message = "User name cannot be empty")
     private String username;
-    @NotBlank(message ="Email cannot be empty")
+    @NotBlank(message = "Email cannot be empty")
     @Email(message = "Email should be valid")
     private String email;
+
+
+    @NotBlank(message = "Role cannot be empty")
+    String role;
 
     @NotBlank(message = "Password cannot be empty")
     @Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters")
@@ -48,5 +52,11 @@ public class UserDTO {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

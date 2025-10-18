@@ -30,15 +30,7 @@ class UserTest {
         assertEquals("secret", user.getPassword());
     }
 
-    @Test
-    void testRolesManagement() {
-        User user = new User();
-        Set<Role> roles = new HashSet<>();
-        Role role = new Role();
-        roles.add(role);
-        user.setRoles(roles);
-        assertEquals(roles, user.getRoles());
-    }
+
 
     @Test
     void testEnrollmentsManagement() {

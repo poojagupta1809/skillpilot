@@ -36,9 +36,6 @@ public class Enrollment {
     private Integer completionPercentage;
 
 
-    @OneToMany(mappedBy = "enrollment", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Progress> enrollmentProgresses;
-
     // Constructors
     public Enrollment() {
     }
@@ -106,11 +103,5 @@ public class Enrollment {
         this.completionPercentage = completionPercentage;
     }
 
-    public Set<Progress> getEnrollmentProgresses() {
-        return enrollmentProgresses;
-    }
 
-    public void setEnrollmentProgresses(Set<Progress> enrollmentProgresses) {
-        this.enrollmentProgresses = enrollmentProgresses;
-    }
 }
