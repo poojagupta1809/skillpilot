@@ -25,8 +25,15 @@ public class GlobalExceptionHandler  {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(UserAlreadyExists.class)
-    public ResponseEntity<Map<String, String>> CourseNotFoundException(UserAlreadyExists e) {
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> CourseNotFoundException(UserAlreadyExistsException e) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(InvalidRoleException.class)
+    public ResponseEntity<Map<String, String>> InvalidRoleException(InvalidRoleException e) {
         Map<String, String> error = new HashMap<>();
         error.put("error", e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);

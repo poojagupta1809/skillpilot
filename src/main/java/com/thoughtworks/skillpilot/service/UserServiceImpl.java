@@ -1,21 +1,17 @@
 package com.thoughtworks.skillpilot.service;
 
 
-import com.thoughtworks.skillpilot.exception.UserAlreadyExists;
+import com.thoughtworks.skillpilot.exception.InvalidRoleException;
+import com.thoughtworks.skillpilot.exception.UserAlreadyExistsException;
 import com.thoughtworks.skillpilot.exception.ValidationExceptionMessages;
 import com.thoughtworks.skillpilot.model.RoleType;
 import com.thoughtworks.skillpilot.model.User;
 import com.thoughtworks.skillpilot.repository.UserRepository;
 
 import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-
 
 
     private final UserRepository userRepository;
@@ -27,11 +23,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerNewUser(String username, String password, String email, String roleName) {
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new UserAlreadyExists(ValidationExceptionMessages.USERNAME_ALREADY_TAKEN);
+            throw new UserAlreadyExistsException(ValidationExceptionMessages.USERNAME_ALREADY_TAKEN);
         }
 
         if(userRepository.findByUserEmail(email).isPresent()) {
-            throw new UserAlreadyExists(ValidationExceptionMessages.USER_WITH_THIS_EMAIL_ALREADY_EXISTS);
+            throw new UserAlreadyExistsException(ValidationExceptionMessages.USER_WITH_THIS_EMAIL_ALREADY_EXISTS);
         }
 
         User user = new User(username, password);
@@ -43,7 +39,7 @@ public class UserServiceImpl implements UserService {
             user.setRole(roleType.name());
 
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Invalid role name: " + roleName);
+            throw new InvalidRoleException(ValidationExceptionMessages.INVALID_ROLE_NAME + roleName);
         }
 
 
