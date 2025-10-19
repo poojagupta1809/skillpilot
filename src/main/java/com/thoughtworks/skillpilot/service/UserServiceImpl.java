@@ -2,6 +2,7 @@ package com.thoughtworks.skillpilot.service;
 
 
 import com.thoughtworks.skillpilot.exception.UserAlreadyExists;
+import com.thoughtworks.skillpilot.exception.ValidationExceptionMessages;
 import com.thoughtworks.skillpilot.model.RoleType;
 import com.thoughtworks.skillpilot.model.User;
 import com.thoughtworks.skillpilot.repository.UserRepository;
@@ -15,6 +16,8 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
 
+
+
     private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -24,14 +27,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerNewUser(String username, String password, String email, String roleName) {
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new UserAlreadyExists("Username already taken!");
+            throw new UserAlreadyExists(ValidationExceptionMessages.USERNAME_ALREADY_TAKEN);
         }
 
         if(userRepository.findByUserEmail(email).isPresent()) {
-            throw new UserAlreadyExists("User with this email already exists.");
+            throw new UserAlreadyExists(ValidationExceptionMessages.USER_WITH_THIS_EMAIL_ALREADY_EXISTS);
         }
 
         User user = new User(username, password);
+
 
         RoleType roleType = null;
         try {

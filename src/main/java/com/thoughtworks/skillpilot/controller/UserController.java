@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/register-user")
-    public ResponseEntity<?> registerAdmin(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO) {
         userService.registerNewUser(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail(),userDTO.getRole());
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
