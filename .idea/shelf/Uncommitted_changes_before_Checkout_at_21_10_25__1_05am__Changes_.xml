@@ -1,0 +1,130 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]" date="1760988913166" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 21/10/25, 1:05 am [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/CourseServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/EnrollmentServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/EnrollmentDTO.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/CourseDTO.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/LessonNotFoundException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Course.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/EnrollmentNotFoundException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/UserDTO.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/LessonRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/UserService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/EnrollmentServiceImplTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Lesson.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/CourseService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/LessonController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/CourseNotFoundException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/SkillpilotApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/UserController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/EnrollmentStatus.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/SkillpilotApplicationTests.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/UserNotFoundException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/LessonServiceTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/User.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/DuplicateEnrollmentException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/UserServiceImplTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/model/UserTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/LessonDTO.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/CourseServiceImplTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/controller/EnrollmentControllerTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/UserServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/LessonService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Role.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/RoleType.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Progress.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" />
+  </binary>
+</changelist>
