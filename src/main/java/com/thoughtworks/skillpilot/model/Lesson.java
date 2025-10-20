@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "lesson")
 public class Lesson {
@@ -29,6 +31,7 @@ public class Lesson {
     @JoinColumn(name = "course_id", nullable = false) // Foreign key to Course entity
     @JsonBackReference
     private Course course;
+
 
     // Constructors
     public Lesson() {
@@ -89,4 +92,5 @@ public class Lesson {
                 ", course=" + course +
                 '}';
     }
+
 }

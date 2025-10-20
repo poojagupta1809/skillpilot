@@ -2,7 +2,6 @@ package com.thoughtworks.skillpilot.model;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -15,25 +14,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int userId;
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false, unique = true)
     private String username;
+    @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false)
     private String password;
+
+
     private Integer status;
 
-    @OneToMany(mappedBy = "enrollment_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "enrollmentId", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Enrollment> enrollments;
 
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.PERSIST) // Eagerly load roles with the user
-    @JoinTable(
-            name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    private String role;
 
-    public User(String username,String password) {
+    public User(String username, String password) {
         this.password = password;
         this.username = username;
     }
@@ -90,15 +87,14 @@ public class User {
     public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
-    public Set<Role> getRoles() {
-        return roles;
+
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
-
-
 
 
 }

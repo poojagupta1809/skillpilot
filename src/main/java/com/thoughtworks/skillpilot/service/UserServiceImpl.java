@@ -1,63 +1,52 @@
 package com.thoughtworks.skillpilot.service;
 
 
-import com.thoughtworks.skillpilot.model.Role;
+import com.thoughtworks.skillpilot.exception.InvalidRoleException;
+import com.thoughtworks.skillpilot.exception.UserAlreadyExistsException;
+import com.thoughtworks.skillpilot.exception.ValidationExceptionMessages;
 import com.thoughtworks.skillpilot.model.RoleType;
 import com.thoughtworks.skillpilot.model.User;
-import com.thoughtworks.skillpilot.repository.RoleRepository;
 import com.thoughtworks.skillpilot.repository.UserRepository;
 
 import org.springframework.stereotype.Service;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
     }
 
     @Override
     public User registerNewUser(String username, String password, String email, String roleName) {
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new RuntimeException("Username already taken!");
+            throw new UserAlreadyExistsException(ValidationExceptionMessages.USERNAME_ALREADY_TAKEN);
+        }
+
+        if(userRepository.findByUserEmail(email).isPresent()) {
+            throw new UserAlreadyExistsException(ValidationExceptionMessages.USER_WITH_THIS_EMAIL_ALREADY_EXISTS);
         }
 
         User user = new User(username, password);
-        Set<Role> roles = new HashSet<>();
 
-        RoleType roleType;
+
+        RoleType roleType = null;
         try {
             roleType = RoleType.valueOf(roleName.toUpperCase());
+            user.setRole(roleType.name());
+
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Invalid role name: " + roleName);
+            throw new InvalidRoleException(ValidationExceptionMessages.INVALID_ROLE_NAME + roleName);
         }
 
-        Optional<Role> roleOptional = roleRepository.findByName(roleType);
-        if (roleOptional.isPresent()) {
-            roles.add(roleOptional.get());
-        } else {
-            roles.add(new Role(roleType));
-        }
 
-        user.setRoles(roles);
         user.setEmail(email);
+
         return userRepository.save(user);
     }
 
-    @Override
-    public User addAdmin(String username, String password, String email) {
-        return registerNewUser(username, password,email, "ADMIN");
-    }
 
-    @Override
-    public User addLearner(String username, String password, String email) {
-        return registerNewUser(username, password, email,"LEARNER");
-    }
 }

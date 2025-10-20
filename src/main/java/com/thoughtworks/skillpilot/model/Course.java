@@ -1,6 +1,8 @@
 package com.thoughtworks.skillpilot.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.Set;
 
@@ -11,16 +13,18 @@ public class Course {
 
 
     @Id
-    private int courseId;
+    @GeneratedValue
+    private Integer courseId;
 
     @Column(name = "course_title")
+    @NotBlank(message = "topic is required")
+    @Size(min = 2, max = 100, message = "topic must be between 2 and 100 characters")
     private String topic;
+    @Size(min = 2, max = 100, message = " instructor must be between 2 and 100 characters")
     private String instructor;
-
-
+    @Size(min = 2, max = 255, message = "description must be between 2 and 255 characters")
     private String description;
     private String difficultyLevel;
-
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Enrollment> enrollments;
 
@@ -35,11 +39,11 @@ public class Course {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int courseId) {
+    public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
 
@@ -59,7 +63,6 @@ public class Course {
     public void setInstructor(String instructor) {
         this.instructor = instructor;
     }
-
 
     public String getDifficultyLevel() {
         return difficultyLevel;
