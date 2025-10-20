@@ -55,29 +55,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.SkillpilotApplication.executor": "Run",
-    "JUnit.CourseServiceImplTest.testGetFilteredCourses_withAllFilters.executor": "Debug",
-    "JUnit.EnrollmentControllerTest.enroll_success.executor": "Run",
-    "JUnit.EnrollmentControllerTest.enroll_userNotFound.executor": "Run",
-    "JUnit.EnrollmentControllerTest.executor": "Run",
-    "JUnit.EnrollmentServiceImplTest (1).executor": "Run",
-    "JUnit.EnrollmentServiceImplTest.executor": "Run",
-    "JUnit.UserControllerTest.executor": "Run",
-    "JUnit.UserServiceImplTest.executor": "Run",
-    "JUnit.UserServiceImplTest.registerNewUser_success.executor": "Run",
-    "JUnit.UserTest.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/enrollment",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/dhanashreesonwane/Desktop/skillpilot",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SkillpilotApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CourseServiceImplTest.testGetFilteredCourses_withAllFilters.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.EnrollmentControllerTest.enroll_success.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EnrollmentControllerTest.enroll_userNotFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EnrollmentControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EnrollmentServiceImplTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EnrollmentServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceImplTest.registerNewUser_success.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/enrollment&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dhanashreesonwane/Desktop/skillpilot&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.thoughtworks.skillpilot.service" />
@@ -87,7 +87,7 @@
       <recent name="com.thoughtworks.skillpilot.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EnrollmentServiceImplTest (1)">
+  <component name="RunManager" selected="Application.SkillpilotApplication">
     <configuration name="SkillpilotApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.thoughtworks.skillpilot.SkillpilotApplication" />
       <module name="skillpilot" />
@@ -164,7 +164,6 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EnrollmentServiceImplTest (1)" />
         <item itemvalue="JUnit.EnrollmentServiceImplTest" />
         <item itemvalue="JUnit.EnrollmentControllerTest" />
         <item itemvalue="Application.SkillpilotApplication" />
