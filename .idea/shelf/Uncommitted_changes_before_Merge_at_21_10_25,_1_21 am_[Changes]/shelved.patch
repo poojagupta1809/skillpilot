@@ -1,0 +1,228 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25__1_05am__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25__1_05am__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25__1_05am__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1760989903113)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25__1_05am__Changes_.xml	(date 1760989903113)
+@@ -0,0 +1,130 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]" date="1760988913166" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 21/10/25, 1:05 am [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/CourseServiceImpl.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/EnrollmentServiceImpl.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/EnrollmentDTO.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/CourseDTO.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/LessonNotFoundException.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Course.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/EnrollmentNotFoundException.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/UserDTO.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/LessonRepository.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/UserService.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/EnrollmentServiceImplTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/CourseRepository.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Lesson.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/CourseService.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/LessonController.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/CourseNotFoundException.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/SkillpilotApplication.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/UserController.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/EnrollmentStatus.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/SkillpilotApplicationTests.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/UserNotFoundException.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/LessonServiceTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/User.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/EnrollmentRepository.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/CourseController.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Enrollment.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/controller/EnrollmentController.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/GlobalExceptionHandler.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/exception/DuplicateEnrollmentException.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/UserServiceImplTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/model/UserTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/dto/LessonDTO.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/Service/CourseServiceImplTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/thoughtworks/skillpilot/controller/EnrollmentControllerTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/RoleRepository.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/repository/UserRepository.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/UserServiceImpl.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/LessonService.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Role.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/RoleType.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/model/Progress.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/thoughtworks/skillpilot/service/EnrollmentService.class" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1760989903113)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch	(date 1760989903113)
+@@ -0,0 +1,31 @@
++Index: target/classes/application.properties
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>ISO-8859-1
++===================================================================
++diff --git a/target/classes/application.properties b/target/classes/application.properties
++deleted file mode 100644
++--- a/target/classes/application.properties	(revision c6e3bf26aa6cc92d89c0b5d4b3a34846314ff873)
+++++ /dev/null	(revision c6e3bf26aa6cc92d89c0b5d4b3a34846314ff873)
++@@ -1,9 +0,0 @@
++-spring.application.name=skillpilot
++-#MySQL database connection properties
++-spring.datasource.url=jdbc:mysql://localhost:3306/SkillPilotDb?createDatabaseIfNotExist=true
++-spring.datasource.username=root
++-spring.datasource.password=password
++-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
++-# Enable Spring debug logging
++-#logging.level.org.springframework=DEBUG
++-spring.jpa.hibernate.ddl-auto=update
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.gitignore b/.gitignore
++new file mode 100644
++--- /dev/null	(date 1760988432286)
+++++ b/.gitignore	(date 1760988432286)
++@@ -0,0 +1,2 @@
+++.idea/workspace.xml
+++/target/
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"8213bcf7-1548-465c-8796-8877f45204b9\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Enum\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-ea-25+36-3489/Contents/Home/lib/src.zip!/java.base/java/lang/String.java\" root0=\"SKIP_INSPECTION\" />\n    <setting file=\"jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-ea-25+36-3489/Contents/Home/lib/src.zip!/java.base/java/util/Set.java\" root0=\"SKIP_INSPECTION\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n        &quot;associatedIndex&quot;: 3\n        }</component>\n  <component name=\"ProjectId\" id=\"33nEzO60UDJXq72586CHV1A3nni\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Application.SkillpilotApplication.executor\": \"Run\",\n    \"JUnit.CourseServiceImplTest.testGetFilteredCourses_withAllFilters.executor\": \"Debug\",\n    \"JUnit.EnrollmentControllerTest.enroll_success.executor\": \"Run\",\n    \"JUnit.EnrollmentControllerTest.enroll_userNotFound.executor\": \"Run\",\n    \"JUnit.EnrollmentControllerTest.executor\": \"Run\",\n    \"JUnit.EnrollmentServiceImplTest (1).executor\": \"Run\",\n    \"JUnit.EnrollmentServiceImplTest.executor\": \"Run\",\n    \"JUnit.UserControllerTest.executor\": \"Run\",\n    \"JUnit.UserServiceImplTest.executor\": \"Run\",\n    \"JUnit.UserServiceImplTest.registerNewUser_success.executor\": \"Run\",\n    \"JUnit.UserTest.executor\": \"Run\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"Cherry-picking in main\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"/Users/dhanashreesonwane/Desktop/skillpilot\",\n    \"settings.editor.selected.configurable\": \"preferences.lookFeel\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"ExtractSuperBase.RECENT_KEYS\">\n      <recent name=\"com.thoughtworks.skillpilot.service\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"com.thoughtworks.skillpilot.repository\" />\n      <recent name=\"com.thoughtworks.skillpilot.model\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.SkillpilotApplication\">\n    <configuration name=\"SkillpilotApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.thoughtworks.skillpilot.SkillpilotApplication\" />\n      <module name=\"skillpilot\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.thoughtworks.skillpilot.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"EnrollmentControllerTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"skillpilot\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.thoughtworks.skillpilot.controller.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"com.thoughtworks.skillpilot.controller\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.thoughtworks.skillpilot.controller.EnrollmentControllerTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"EnrollmentServiceImplTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"skillpilot\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.thoughtworks.skillpilot.service.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"com.thoughtworks.skillpilot.service\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.thoughtworks.skillpilot.service.EnrollmentServiceImplTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"JUnit.EnrollmentServiceImplTest\" />\n        <item itemvalue=\"JUnit.EnrollmentControllerTest\" />\n        <item itemvalue=\"Application.SkillpilotApplication\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"TaskManager\">\n    <servers />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\n          <url>file://$PROJECT_DIR$/src/main/java/com/thoughtworks/skillpilot/controller/EnrollmentController.java</url>\n          <line>166</line>\n          <option name=\"timeStamp\" value=\"4\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c6e3bf26aa6cc92d89c0b5d4b3a34846314ff873)
++++ b/.idea/workspace.xml	(date 1760989903113)
+@@ -5,6 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="8213bcf7-1548-465c-8796-8877f45204b9" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25,_1_05 am_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_21_10_25__1_05am__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -65,7 +67,7 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+     "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "Cherry-picking in main",
++    "git-widget-placeholder": "main",
+     "kotlin-language-version-configured": "true",
+     "last_opened_file_path": "/Users/dhanashreesonwane/Desktop/skillpilot",
+     "settings.editor.selected.configurable": "preferences.lookFeel"
+@@ -134,6 +136,17 @@
+   </component>
+   <component name="TaskManager">
+     <servers />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
