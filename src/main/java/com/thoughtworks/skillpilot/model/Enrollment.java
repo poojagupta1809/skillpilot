@@ -33,7 +33,6 @@ public class Enrollment {
     private LocalDateTime completionDate;
 
 
-
     // Constructors
     public Enrollment() {
     }

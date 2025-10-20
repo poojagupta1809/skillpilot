@@ -1,33 +1,37 @@
 package com.thoughtworks.skillpilot.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.thoughtworks.skillpilot.exception.*;
+import com.thoughtworks.skillpilot.DTO.EnrollmentDTO;
+import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
+import com.thoughtworks.skillpilot.exception.DuplicateEnrollmentException;
+import com.thoughtworks.skillpilot.exception.EnrollmentNotFoundException;
+import com.thoughtworks.skillpilot.exception.UserNotFoundException;
 import com.thoughtworks.skillpilot.model.Enrollment;
+import com.thoughtworks.skillpilot.model.EnrollmentStatus;
+import com.thoughtworks.skillpilot.model.User;
+import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.service.EnrollmentService;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Arrays;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(EnrollmentController.class)
-@Import(EnrollmentControllerTest.MockConfig.class)
-class EnrollmentControllerTest {
+public class EnrollmentControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,85 +42,151 @@ class EnrollmentControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @TestConfiguration
-    static class MockConfig {
-        @Bean
-        public EnrollmentService enrollmentService() {
-            return Mockito.mock(EnrollmentService.class);
-        }
+    private Enrollment enrollment;
+    private EnrollmentDTO enrollmentDTO;
+
+    @BeforeEach
+    public void setup() {
+        User user = new User();
+        user.setUserId(1);
+        user.setUsername("testUser");
+
+        Course course = new Course();
+        course.setCourseId(10);
+        course.setTopic("Java Basics");
+
+        enrollment = new Enrollment(user, course);
+        enrollment.setEnrollmentId(100);
+        enrollment.setStatus(EnrollmentStatus.ACTIVE);
+        enrollment.setEnrollmentDate(LocalDateTime.now());
+
+        enrollmentDTO = new EnrollmentDTO(
+                enrollment.getEnrollmentId(),
+                user.getUserId(),
+                user.getUsername(),
+                course.getCourseId(),
+                course.getTopic(),
+                enrollment.getStatus(),
+                enrollment.getEnrollmentDate()
+        );
     }
 
     @Test
-    void enroll_success() throws Exception {
-        Enrollment enrollment = new Enrollment();
-        enrollment.setEnrollmentId(1);
+    public void testEnroll_Success() throws Exception {
+        when(enrollmentService.enrollLearnerInCourse(1, 10)).thenReturn(enrollment);
 
-        when(enrollmentService.enrollLearnerInCourse(1, 101)).thenReturn(enrollment);
-
-        mockMvc.perform(post("/api/enrollments/101/enroll?userId=1"))
+        mockMvc.perform(post("/api/enrollments/10/enroll")
+                        .param("userId", "1"))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.enrollmentId").value(1));
+                .andExpect(jsonPath("$.enrollmentId").value(enrollment.getEnrollmentId()))
+                .andExpect(jsonPath("$.userId").value(1))
+                .andExpect(jsonPath("$.userName").value("testUser"))
+                .andExpect(jsonPath("$.courseId").value(10))
+                .andExpect(jsonPath("$.courseTitle").value("Java Basics"))
+                .andExpect(jsonPath("$.status").value("ACTIVE"));
     }
 
     @Test
-    void enroll_duplicate() throws Exception {
-        when(enrollmentService.enrollLearnerInCourse(anyInt(), anyInt()))
-                .thenThrow(new DuplicateEnrollmentException("Duplicate"));
+    public void testEnroll_DuplicateEnrollment() throws Exception {
+        when(enrollmentService.enrollLearnerInCourse(1, 10))
+                .thenThrow(new DuplicateEnrollmentException("User 1 is already enrolled in course 10"));
 
-        mockMvc.perform(post("/api/enrollments/101/enroll?userId=1"))
+        mockMvc.perform(post("/api/enrollments/10/enroll")
+                        .param("userId", "1"))
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("Duplicate"));
+                .andExpect(content().string("User 1 is already enrolled in course 10"));
     }
 
     @Test
-    void enroll_userNotFound() throws Exception {
-        when(enrollmentService.enrollLearnerInCourse(anyInt(), anyInt()))
-                .thenThrow(new UserNotFoundException("User not found"));
+    public void testEnroll_UserNotFound() throws Exception {
+        when(enrollmentService.enrollLearnerInCourse(999, 10))
+                .thenThrow(new UserNotFoundException("User not found with id: 999"));
 
-        mockMvc.perform(post("/api/enrollments/101/enroll?userId=1"))
+        mockMvc.perform(post("/api/enrollments/10/enroll")
+                        .param("userId", "999"))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("User not found"));
+                .andExpect(content().string("User not found with id: 999"));
     }
 
     @Test
-    void unenroll_success() throws Exception {
-        when(enrollmentService.unenrollLearnerFromCourse(1, 101)).thenReturn(true);
+    public void testUnenroll_Success() throws Exception {
+        // Just ensure service call does not throw
+        mockMvc.perform(delete("/api/enrollments/10/unenroll")
+                        .param("userId", "1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Enrollment updated to UNENROLLED"));
+    }
 
-        mockMvc.perform(delete("/api/enrollments/101/unenroll?userId=1"))
+    @Test
+    public void testUnenroll_EnrollmentNotFound() throws Exception {
+        doThrow(new EnrollmentNotFoundException("Enrollment not found for userId=1, courseId=10"))
+                .when(enrollmentService).unenrollLearnerFromCourse(1, 10);
+
+        mockMvc.perform(delete("/api/enrollments/10/unenroll")
+                        .param("userId", "1"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Enrollment not found for userId=1, courseId=10"));
+    }
+
+    @Test
+    public void testGetEnrollmentById_Found() throws Exception {
+        when(enrollmentService.getEnrollmentById(100)).thenReturn(Optional.of(enrollment));
+
+        mockMvc.perform(get("/api/enrollments/100"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.enrollmentId").value(100))
+                .andExpect(jsonPath("$.userId").value(1))
+                .andExpect(jsonPath("$.courseId").value(10));
+    }
+
+    @Test
+    public void testGetEnrollmentById_NotFound() throws Exception {
+        when(enrollmentService.getEnrollmentById(999)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/api/enrollments/999"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Enrollment not found"));
+    }
+
+    @Test
+    public void testGetEnrollmentsByCourse() throws Exception {
+        when(enrollmentService.getEnrollmentsByCourse(10)).thenReturn(List.of(enrollment));
+
+        mockMvc.perform(get("/api/enrollments/course/10"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].enrollmentId").value(enrollment.getEnrollmentId()));
+    }
+
+    @Test
+    public void testGetEnrollmentsByUser() throws Exception {
+        when(enrollmentService.getEnrollmentsByUser(1)).thenReturn(List.of(enrollment));
+
+        mockMvc.perform(get("/api/enrollments/user/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].enrollmentId").value(enrollment.getEnrollmentId()));
+    }
+
+    @Test
+    public void testDeleteEnrollmentsByCourse() throws Exception {
+        mockMvc.perform(delete("/api/enrollments/course/10"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("All enrollments for course 10 deleted"));
+    }
+
+    @Test
+    public void testDeleteEnrollmentByUserAndCourse_Success() throws Exception {
+        mockMvc.perform(delete("/api/enrollments/course/10/user/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Enrollment deleted successfully"));
     }
 
     @Test
-    void getEnrollmentById_success() throws Exception {
-        Enrollment enrollment = new Enrollment();
-        enrollment.setEnrollmentId(5);
-        when(enrollmentService.getEnrollmentById(5)).thenReturn(Optional.of(enrollment));
+    public void testDeleteEnrollmentByUserAndCourse_NotFound() throws Exception {
+        doThrow(new EnrollmentNotFoundException("Enrollment not found for userId=1, courseId=10"))
+                .when(enrollmentService).deleteEnrollmentByUserAndCourse(1, 10);
 
-        mockMvc.perform(get("/api/enrollments/5"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.enrollmentId").value(5));
-    }
-
-    @Test
-    void getAllEnrollments_success() throws Exception {
-        Enrollment e1 = new Enrollment();
-        e1.setEnrollmentId(1);
-        Enrollment e2 = new Enrollment();
-        e2.setEnrollmentId(2);
-
-        when(enrollmentService.getAllEnrollments()).thenReturn(Arrays.asList(e1, e2));
-
-        mockMvc.perform(get("/api/enrollments/getAllEnrollments"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].enrollmentId").value(1))
-                .andExpect(jsonPath("$[1].enrollmentId").value(2));
-    }
-
-    @Test
-    void deleteEnrollmentByCourse_success() throws Exception {
-        mockMvc.perform(delete("/api/enrollments/course/101"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("All enrollments for course 101 deleted"));
+        mockMvc.perform(delete("/api/enrollments/course/10/user/1"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().string("Enrollment not found for userId=1, courseId=10"));
     }
 }

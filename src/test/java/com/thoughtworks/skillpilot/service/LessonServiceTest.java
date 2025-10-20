@@ -1,4 +1,4 @@
-package com.thoughtworks.skillpilot.Service;
+package com.thoughtworks.skillpilot.service;
 
 import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.exception.LessonNotFoundException;
@@ -6,7 +6,6 @@ import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.model.Lesson;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
 import com.thoughtworks.skillpilot.repository.LessonRepository;
-import com.thoughtworks.skillpilot.service.LessonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

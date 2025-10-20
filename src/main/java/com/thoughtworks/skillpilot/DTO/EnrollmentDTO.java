@@ -1,10 +1,10 @@
-package com.thoughtworks.skillpilot.dto;
+package com.thoughtworks.skillpilot.DTO;
 
 import com.thoughtworks.skillpilot.model.EnrollmentStatus;
 
 import java.time.LocalDateTime;
 
-public class EnrollmentDTO{
+public class EnrollmentDTO {
     private int enrollmentId;
     private int userId;
     private String userName;
@@ -12,7 +12,6 @@ public class EnrollmentDTO{
     private String courseTitle;
     private EnrollmentStatus status;
     private LocalDateTime enrollmentDate;
-
 
 
     public EnrollmentDTO(int enrollmentId, int userId, String userName, int courseId, String courseTitle, EnrollmentStatus status, LocalDateTime enrollmentDate) {
