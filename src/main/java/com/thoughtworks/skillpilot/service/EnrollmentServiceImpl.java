@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,55 +35,85 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     }
 
 
+    // Enroll a user in a course
+
     @Override
     public Enrollment enrollLearnerInCourse(int userId, int courseId) {
-        // Check if enrollment already exists
-        Optional<Enrollment> existing = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId);
-
-        if (existing.isPresent()) {
-            throw new DuplicateEnrollmentException(
-                    "User " + userId + " is already enrolled in course " + courseId
-            );
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException("User not found with id: " + userId);
         }
 
-        // Load user and course
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
-        Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + courseId));
+        if (!courseRepository.existsById(courseId)) {
+            throw new CourseNotFoundException("Course not found with id: " + courseId);
+        }
 
-        // Create new enrollment
-        Enrollment enrollment = new Enrollment();
-        enrollment.setUser(user);
-        enrollment.setCourse(course);
+        Optional<Enrollment> existing = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId);
+        if (existing.isPresent()) {
+            throw new DuplicateEnrollmentException("User " + userId + " is already enrolled in course " + courseId);
+        }
+
+        User user = userRepository.findById(userId).orElseThrow();
+        Course course = courseRepository.findById(courseId).orElseThrow();
+
+        Enrollment enrollment = new Enrollment(user, course);
         enrollment.setStatus(EnrollmentStatus.ACTIVE);
 
         return enrollmentRepository.save(enrollment);
     }
 
+
+    // Unenroll a user from a course
+
     @Override
-    public boolean unenrollLearnerFromCourse(int userId, int courseId) throws EnrollmentNotFoundException {
+    public boolean unenrollLearnerFromCourse(int userId, int courseId) {
         Enrollment enrollment = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId)
-                .orElseThrow(() -> new EnrollmentNotFoundException("Enrollment not found for userId=" + userId + ", courseId=" + courseId));
+                .orElseThrow(() -> new EnrollmentNotFoundException(
+                        "Enrollment not found for userId=" + userId + ", courseId=" + courseId));
+
         enrollment.setStatus(EnrollmentStatus.UNENROLLED);
         enrollmentRepository.save(enrollment);
         return true;
     }
 
+
+    // Get all active enrollments in a course
+
     @Override
     public List<Enrollment> getEnrollmentsByCourse(int courseId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new CourseNotFoundException("Course not found with id: " + courseId);
+        }
+
         return enrollmentRepository.findByCourse_CourseIdAndStatus(courseId, EnrollmentStatus.ACTIVE);
     }
 
+
+    // Get all active enrollments for a user
+
     @Override
     public List<Enrollment> getEnrollmentsByUser(int userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException("User not found with id: " + userId);
+        }
+
         return enrollmentRepository.findByUser_UserIdAndStatus(userId, EnrollmentStatus.ACTIVE);
     }
 
+
+    // Get an enrollment by ID
+
     @Override
     public Optional<Enrollment> getEnrollmentById(Integer id) {
+        if (!enrollmentRepository.existsById(id)) {
+            throw new EnrollmentNotFoundException("Enroll not found with id: " + id);
+        }
+
         return enrollmentRepository.findById(id);
+
     }
+
+
+    // Get all enrollments in the system
 
     @Override
     public List<Enrollment> getAllEnrollments() {
@@ -92,22 +121,30 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     }
 
 
+    // Admin deletes all enrollments for a course
+
     @Override
     @Transactional
     public void deleteEnrollmentsByCourse(int courseId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new CourseNotFoundException("Course not found with id: " + courseId);
+        }
+
         enrollmentRepository.deleteByCourse_CourseId(courseId);
     }
 
+
+    // Admin deletes specific enrollment of a user in a course
+
     @Override
     @Transactional
-    public void deleteEnrollmentByUserAndCourse(int userId, int courseId) throws EnrollmentNotFoundException {
+    public void deleteEnrollmentByUserAndCourse(int userId, int courseId) {
         Optional<Enrollment> enrollment = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId);
-        if (enrollment.isPresent()) {
-            enrollmentRepository.delete(enrollment.get());
-        } else {
+
+        if (enrollment.isEmpty()) {
             throw new EnrollmentNotFoundException("Enrollment not found for userId=" + userId + ", courseId=" + courseId);
         }
+
+        enrollmentRepository.delete(enrollment.get());
     }
-
-
 }

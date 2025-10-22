@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,9 +31,6 @@ public class Enrollment {
 
     private LocalDateTime enrollmentDate = LocalDateTime.now();
     private LocalDateTime completionDate;
-
-    @Column(name = "completion_percentage", columnDefinition = "integer default 0")
-    private Integer completionPercentage;
 
 
     // Constructors
@@ -94,14 +91,5 @@ public class Enrollment {
     public void setEnrollmentDate(LocalDateTime enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
     }
-
-    public Integer getCompletionPercentage() {
-        return completionPercentage;
-    }
-
-    public void setCompletionPercentage(Integer completionPercentage) {
-        this.completionPercentage = completionPercentage;
-    }
-
 
 }
