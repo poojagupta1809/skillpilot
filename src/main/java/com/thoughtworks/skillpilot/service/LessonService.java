@@ -1,51 +1,18 @@
 package com.thoughtworks.skillpilot.service;
 
-import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
-import com.thoughtworks.skillpilot.exception.LessonNotFoundException;
-import com.thoughtworks.skillpilot.model.Course;
-import com.thoughtworks.skillpilot.model.Lesson;
-import com.thoughtworks.skillpilot.repository.CourseRepository;
-import com.thoughtworks.skillpilot.repository.LessonRepository;
-import org.springframework.stereotype.Service;
+import com.thoughtworks.skillpilot.dto.LessonAdminDTO;
+import com.thoughtworks.skillpilot.dto.LessonDTO;
 
 import java.util.List;
 
-@Service
-public class LessonService {
-    private final LessonRepository lessonRepository;
-    private final CourseRepository courseRepository;
+public interface LessonService {
+    LessonAdminDTO createLesson(int courseId, LessonAdminDTO lessonDTO);
 
-    public LessonService(LessonRepository lessonRepository, CourseRepository courseRepository) {
-        this.lessonRepository = lessonRepository;
-        this.courseRepository = courseRepository;
-    }
+    LessonAdminDTO updateLesson(int lessonId, LessonAdminDTO lessonDTO);
 
-    public Lesson createLesson(int courseId, Lesson lesson) {
-        Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new CourseNotFoundException("Course not found with id: " + courseId));
+    void deleteLessonById(int lessonId);
 
-        lesson.setCourse(course);
-        return lessonRepository.save(lesson);
-    }
+    List<LessonAdminDTO> getLessonsByCourseId(int courseId);
 
-    public Lesson updateLesson(int lessonId, Lesson updatedLesson) {
-        Lesson existingLesson = lessonRepository.findById(lessonId)
-                .orElseThrow(() -> new LessonNotFoundException("Lesson not found with id: " + lessonId));
-        existingLesson.setTitle(updatedLesson.getTitle());
-
-        if (updatedLesson.getContent() != null) {
-            existingLesson.setContent(updatedLesson.getContent());
-        }
-        return lessonRepository.save(existingLesson);
-    }
-
-    public List<Lesson> getLessonsByCourseId(int courseId) {
-        if (!courseRepository.existsById(courseId)) {
-            throw new CourseNotFoundException("Course not found with id " + courseId);
-        }
-
-        return lessonRepository.findByCourse_CourseId(courseId);
-    }
-
-
+    List<LessonDTO> getCourseLessonsForLearners(int courseId);
 }

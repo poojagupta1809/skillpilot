@@ -1,13 +1,12 @@
 package com.thoughtworks.skillpilot.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import jakarta.persistence.*;
+import org.hibernate.validator.constraints.URL;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "lesson")
@@ -17,29 +16,45 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lessonId;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Lesson title is required")
-    @Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
+    @NotBlank(message = "Title cannot be empty")
+    @Size(max = 100)
     private String title;
 
-    private String content;
+    @Size(max = 500, message = "Description can't exceed 500 characters")
+    @Column(length = 500)
+    private String description;//short summary about the lesson
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
+    private ContentType contentType; // VIDEO, TEXT, QUIZ
+    @Lob
+    private String content; //for text based lesson
+    @URL(message = "Video URL must be a valid URL")
+    private String videoUrl;
 
-    private String videoUrl; // URL for video content, if applicable
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Many lessons can belong to one course
-    @JoinColumn(name = "course_id", nullable = false) // Foreign key to Course entity
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
     @JsonBackReference
     private Course course;
 
 
-    // Constructors
     public Lesson() {
     }
 
-
-    // Getters and Setters
-
+    public Lesson(String title, String description, ContentType contentType, String content,
+                  String videoUrl, Course course) {
+        this.title = title;
+        this.description = description;
+        this.contentType = contentType;
+        this.content = content;
+        this.videoUrl = videoUrl;
+        this.course = course;
+    }
 
     public int getLessonId() {
         return lessonId;
@@ -57,6 +72,31 @@ public class Lesson {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ContentType getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(ContentType contentType) {
+        this.contentType = contentType;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+
     public String getContent() {
         return content;
     }
@@ -66,12 +106,20 @@ public class Lesson {
     }
 
 
-    public String getVideoUrl() {
-        return videoUrl;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setVideoUrl(String videoUrl) {
-        this.videoUrl = videoUrl;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Course getCourse() {
@@ -82,15 +130,15 @@ public class Lesson {
         this.course = course;
     }
 
-    @Override
-    public String toString() {
-        return "Lesson{" +
-                "id=" + lessonId +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", videoUrl='" + videoUrl + '\'' +
-                ", course=" + course +
-                '}';
+    @PrePersist
+    public void prePersist() {
+        LocalDateTime now = LocalDateTime.now();
+        this.createdAt = now;
+        this.updatedAt = now;
     }
 
+    @PreUpdate
+    public void preUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }
