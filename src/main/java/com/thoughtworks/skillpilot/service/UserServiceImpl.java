@@ -1,14 +1,15 @@
 package com.thoughtworks.skillpilot.service;
 
 
+import com.thoughtworks.skillpilot.dto.UserDTO;
 import com.thoughtworks.skillpilot.exception.InvalidRoleException;
 import com.thoughtworks.skillpilot.exception.UserAlreadyExistsException;
 import com.thoughtworks.skillpilot.exception.ValidationExceptionMessages;
 import com.thoughtworks.skillpilot.model.RoleType;
 import com.thoughtworks.skillpilot.model.User;
 import com.thoughtworks.skillpilot.repository.UserRepository;
-
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -26,14 +27,13 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistsException(ValidationExceptionMessages.USERNAME_ALREADY_TAKEN);
         }
 
-        if(userRepository.findByUserEmail(email).isPresent()) {
+        if (userRepository.findByUserEmail(email).isPresent()) {
             throw new UserAlreadyExistsException(ValidationExceptionMessages.USER_WITH_THIS_EMAIL_ALREADY_EXISTS);
         }
 
         User user = new User(username, password);
 
-
-        RoleType roleType = null;
+        RoleType roleType;
         try {
             roleType = RoleType.valueOf(roleName.toUpperCase());
             user.setRole(roleType.name());
@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService {
         user.setEmail(email);
 
         return userRepository.save(user);
+    }
+
+    public boolean validateUser(UserDTO profile) {
+
+         return userRepository.findByUsernameAndPassword(profile.getUsername(), profile.getPassword()).isPresent();
     }
 
 
