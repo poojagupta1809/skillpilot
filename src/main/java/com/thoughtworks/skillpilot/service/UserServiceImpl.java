@@ -2,6 +2,7 @@ package com.thoughtworks.skillpilot.service;
 
 
 import com.thoughtworks.skillpilot.dto.UserDTO;
+import com.thoughtworks.skillpilot.dto.UserResponseDTO;
 import com.thoughtworks.skillpilot.exception.InvalidRoleException;
 import com.thoughtworks.skillpilot.exception.UserAlreadyExistsException;
 import com.thoughtworks.skillpilot.exception.ValidationExceptionMessages;
@@ -48,9 +49,22 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    public boolean validateUser(UserDTO profile) {
+    public UserResponseDTO getUser(UserDTO userToLogin) {
 
-         return userRepository.findByUsernameAndPassword(profile.getUsername(), profile.getPassword()).isPresent();
+        if (userRepository.findByUsernameAndPassword(userToLogin.getUsername(), userToLogin.getPassword()).isPresent()) {
+            User user = userRepository.findByUsernameAndPassword(userToLogin.getUsername(), userToLogin.getPassword()).get();
+            return mapUsertouserdto(user);
+        } else {
+            return null;
+        }
+    }
+
+    private UserResponseDTO mapUsertouserdto(User user) {
+        UserResponseDTO userDto = new UserResponseDTO();
+        userDto.setEmail(user.getEmail());
+        userDto.setUsername(user.getUsername());
+        userDto.setRole(user.getRole());
+        return userDto;
     }
 
 
