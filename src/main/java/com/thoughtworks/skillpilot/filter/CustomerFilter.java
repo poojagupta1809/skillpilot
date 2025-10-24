@@ -37,7 +37,7 @@ public class CustomerFilter extends GenericFilter {
 
 
         //to handle preflight request for the first time which is raised by web browser , when ui is based on javascript , to check the availability of server
-        if(cachedBodyHttpServletRequest.getServletPath().equals("/api/users/login")) {
+        if(cachedBodyHttpServletRequest.getServletPath().equals("/api/users/login") || cachedBodyHttpServletRequest.getServletPath().equals("/api/users/register-user")) {
 
             chain.doFilter(cachedBodyHttpServletRequest, response);
         } else {
