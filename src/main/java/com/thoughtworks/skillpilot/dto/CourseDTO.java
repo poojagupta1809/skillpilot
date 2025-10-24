@@ -3,25 +3,37 @@ package com.thoughtworks.skillpilot.dto;
 import java.util.List;
 
 public class CourseDTO {
-    private int id;
-    private String title;
+    private String topic;
+    private String instructor;
     private String description;
+    private String difficultyLevel;
     private List<LessonDTO> lessons;
 
-    public int getId() {
-        return id;
+    public CourseDTO() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public CourseDTO(String topic, String instructor, String description, String difficultyLevel, List<LessonDTO> lessons) {
+        this.topic = topic;
+        this.instructor = instructor;
+        this.description = description;
+        this.difficultyLevel = difficultyLevel;
+        this.lessons = lessons;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTopic() {
+        return topic;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(String instructor) {
+        this.instructor = instructor;
     }
 
     public String getDescription() {
@@ -30,6 +42,14 @@ public class CourseDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
     }
 
     public List<LessonDTO> getLessons() {
