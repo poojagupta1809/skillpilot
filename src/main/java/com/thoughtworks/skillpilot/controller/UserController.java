@@ -2,7 +2,7 @@
 package com.thoughtworks.skillpilot.controller;
 
 
-import com.thoughtworks.skillpilot.dto.UserDTO;
+import com.thoughtworks.skillpilot.DTO.UserDTO;
 import com.thoughtworks.skillpilot.dto.UserResponseDTO;
 import com.thoughtworks.skillpilot.service.UserServiceImpl;
 import io.jsonwebtoken.Jwts;

@@ -1,7 +1,7 @@
 package com.thoughtworks.skillpilot.service;
 
 
-import com.thoughtworks.skillpilot.dto.UserDTO;
+import com.thoughtworks.skillpilot.DTO.UserDTO;
 import com.thoughtworks.skillpilot.dto.UserResponseDTO;
 import com.thoughtworks.skillpilot.exception.InvalidRoleException;
 import com.thoughtworks.skillpilot.exception.UserAlreadyExistsException;
