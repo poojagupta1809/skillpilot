@@ -2,7 +2,8 @@
 package com.thoughtworks.skillpilot.controller;
 
 
-import com.thoughtworks.skillpilot.DTO.UserDTO;
+import com.thoughtworks.skillpilot.dto.UserDTO;
+import com.thoughtworks.skillpilot.dto.UserResponseDTO;
 import com.thoughtworks.skillpilot.service.UserServiceImpl;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -27,43 +28,38 @@ public class UserController {
 
     @PostMapping("/register-user")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserDTO userDTO) {
-        userService.registerNewUser(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail(),userDTO.getRole());
+        userService.registerNewUser(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail(), userDTO.getRole());
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 
 
     @PostMapping("/login")
-    public ResponseEntity<?> validate(@RequestBody UserDTO userDTO)
-    {
-        boolean validatedUser= userService.validateUser(userDTO);
+    public ResponseEntity<?> validate(@RequestBody UserDTO userDTO) {
+        UserResponseDTO usr = userService.getUser(userDTO);
 
-        if (validatedUser)
-        {
-            HashMap<String,String> tokenMap=new HashMap<>();
-            String generatedToken=generateToken(userDTO);
-            tokenMap.put("token",generatedToken);
-            return new ResponseEntity<>(tokenMap,HttpStatus.OK);
+        if (usr != null) {
+            HashMap<String, Object> responseMap = new HashMap<>();
+            String generatedToken = generateToken(userDTO);
+            responseMap.put("token", generatedToken);
+            responseMap.put("user", usr);
+            return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
-        }
-        else
-        {
-            return new ResponseEntity<>("Not Authorized", HttpStatus.UNAUTHORIZED);
+        } else {
+            return new ResponseEntity<>("UnAuthorized user - ", HttpStatus.UNAUTHORIZED);
         }
     }
 
 
-    private String generateToken(UserDTO userObj)
-    {
+    private String generateToken(UserDTO userObj) {
 
-        long expiry=10_000_00;
+        long expiry = 10_000_00;
 
-        return Jwts.builder().setSubject( userObj.getEmail())
+        return Jwts.builder().setSubject(userObj.getEmail())
                 .setAudience(userObj.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ expiry))
+                .setExpiration(new Date(System.currentTimeMillis() + expiry))
                 .signWith(SignatureAlgorithm.HS256, "twteamkey")
                 .compact();
-
 
 
     }
