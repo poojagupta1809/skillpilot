@@ -1,5 +1,6 @@
 package com.thoughtworks.skillpilot.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -28,8 +29,10 @@ public class Course {
     private String description;
     private String difficultyLevel;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("course-enrollment")
     private Set<Enrollment> enrollments;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("course-lesson")
     private List<Lesson> lessonList=new ArrayList<>();
 
     public List<Lesson> getLessonList() {

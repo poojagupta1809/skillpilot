@@ -1,4 +1,5 @@
-package com.thoughtworks.skillpilot.dto;
+package com.thoughtworks.skillpilot.DTO;
+import com.thoughtworks.skillpilot.dto.LessonDTO;
 
 import java.util.List;
 

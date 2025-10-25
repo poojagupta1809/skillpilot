@@ -24,16 +24,12 @@ public class CourseController {
     }
 
     @GetMapping("/view")
-    public List<Course> getAllCoursesForLearner() {
-        return courseService.getAllCourses();
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<?> getCourse() {
+    public ResponseEntity<?> getAllCoursesForLearner() {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
-    @PostMapping
+
+    @PostMapping(value = "/add", consumes = "application/json")
     public ResponseEntity<?> addCourse(@Valid @RequestBody Course course) {
         try {
             return new ResponseEntity<>(courseService.createCourse(course), HttpStatus.CREATED);

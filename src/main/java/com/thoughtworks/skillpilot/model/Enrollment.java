@@ -23,7 +23,7 @@ public class Enrollment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("course-enrollment")
     private Course course;
 
     private EnrollmentStatus status = EnrollmentStatus.ACTIVE;

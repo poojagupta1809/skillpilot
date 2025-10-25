@@ -39,7 +39,7 @@ public class Lesson {
     private LocalDateTime updatedAt;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
-    @JsonBackReference
+    @JsonBackReference("course-lesson")
     private Course course;
 
 

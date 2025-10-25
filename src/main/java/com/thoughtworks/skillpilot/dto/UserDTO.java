@@ -1,4 +1,4 @@
-package com.thoughtworks.skillpilot.dto;
+package com.thoughtworks.skillpilot.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
