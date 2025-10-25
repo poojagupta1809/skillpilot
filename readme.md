@@ -88,6 +88,3 @@ It’s a simplified version of a Learning Management System (LMS) like Udemy, fo
 * Hermina Garg
 
 ---
-
-
-Would you like me to add that small “How to Run the Project” section now (with React frontend + Spring Boot backend steps)? It’ll make your README ready for submission or upload.
