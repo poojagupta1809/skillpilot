@@ -1,5 +1,6 @@
 package com.thoughtworks.skillpilot.service;
 
+import com.thoughtworks.skillpilot.dto.CourseDTO;
 import com.thoughtworks.skillpilot.model.Course;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public interface CourseService {
 
     void removeCourseById(int courseId);
 
-    List<Course> getAllCourses();
+    List<CourseDTO> getAllCourses();
 
-    List<Course> getFilteredCourses(String topic, String difficultyLevel, String instructorName);
+    List<CourseDTO> getFilteredCourses(String topic, String difficultyLevel, String instructorName);
 
     Course getCourseById(int courseId);
 

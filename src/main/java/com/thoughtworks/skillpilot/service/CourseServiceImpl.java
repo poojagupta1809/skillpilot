@@ -1,5 +1,6 @@
 package com.thoughtworks.skillpilot.service;
 
+import com.thoughtworks.skillpilot.dto.CourseDTO;
 import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
 import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.model.Course;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -50,10 +52,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getAllCourses() {
-
-        return courseRepository.findAll();
+    public List<CourseDTO> getAllCourses() {
+        return courseRepository.findAll()
+                .stream()
+                .map(CourseDTO::new)
+                .collect(Collectors.toList());
     }
+
 
     public Course updateCourse(int id, Course course) {
         Optional<Course> existingCourse = courseRepository.findById(id);
@@ -83,28 +88,35 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public List<Course> getFilteredCourses(String topic, String difficultyLevel, String instructorName) {
+    public List<CourseDTO> getFilteredCourses(String topic, String difficultyLevel, String instructorName) {
+        List<Course> courses;
 
-        boolean hasTopic = topic != null && !topic.isEmpty();
-        boolean hasDifficulty = difficultyLevel != null && !difficultyLevel.isEmpty();
-        boolean hasInstructor = instructorName != null && !instructorName.isEmpty();
+        boolean hasTopic = topic != null && !topic.isBlank();
+        boolean hasDifficulty = difficultyLevel != null && !difficultyLevel.isBlank();
+        boolean hasInstructor = instructorName != null && !instructorName.isBlank();
 
         if (hasTopic && hasDifficulty && hasInstructor) {
-            return courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(topic, instructorName, difficultyLevel);
+            courses = courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(
+                    topic, instructorName, difficultyLevel);
         } else if (hasTopic && hasDifficulty) {
-            return courseRepository.findByTopicIgnoreCaseAndDifficultyLevelIgnoreCase(topic, difficultyLevel);
+            courses = courseRepository.findByTopicIgnoreCaseAndDifficultyLevelIgnoreCase(topic, difficultyLevel);
         } else if (hasTopic && hasInstructor) {
-            return courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCase(topic, instructorName);
+            courses = courseRepository.findByTopicIgnoreCaseAndInstructorIgnoreCase(topic, instructorName);
         } else if (hasDifficulty && hasInstructor) {
-            return courseRepository.findByInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(instructorName, difficultyLevel);
+            courses = courseRepository.findByInstructorIgnoreCaseAndDifficultyLevelIgnoreCase(instructorName, difficultyLevel);
         } else if (hasTopic) {
-            return courseRepository.findByTopicIgnoreCase(topic);
+            courses = courseRepository.findByTopicIgnoreCase(topic);
         } else if (hasInstructor) {
-            return courseRepository.findByInstructorIgnoreCase(instructorName);
+            courses = courseRepository.findByInstructorIgnoreCase(instructorName);
         } else {
-            return courseRepository.findAll();
+            courses = courseRepository.findAll();
         }
+
+        return courses.stream()
+                .map(CourseDTO::new)
+                .collect(Collectors.toList());
     }
+
 
     @Override
     public Course getCourseById(int courseId) {

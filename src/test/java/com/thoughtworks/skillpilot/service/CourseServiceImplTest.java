@@ -1,5 +1,7 @@
 package com.thoughtworks.skillpilot.service;
 
+import com.thoughtworks.skillpilot.dto.CourseAdminDTO;
+import com.thoughtworks.skillpilot.dto.CourseDTO;
 import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
 import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.model.Course;
@@ -21,7 +23,8 @@ import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
-class CourseServiceImplTest {
+class
+CourseServiceImplTest {
 
     @Mock
     private CourseRepository courseRepository;
@@ -41,7 +44,7 @@ class CourseServiceImplTest {
     void testGetAllCourses_returnsAllCourses() {
         when(courseRepository.findAll()).thenReturn(Arrays.asList(course1, course2));
 
-        List<Course> result = courseServiceImpl.getAllCourses();
+        List<CourseDTO> result = courseServiceImpl.getAllCourses();
 
         assertEquals(2, result.size());
         assertEquals(course1, result.get(0));
@@ -55,7 +58,7 @@ class CourseServiceImplTest {
                 "Java", "JavaTechie", "Beginner"))
                 .thenReturn(Collections.singletonList(course1));
 
-        List<Course> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "JavaTechie");
+        List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "JavaTechie");
 
         assertEquals(1, result.size());
         assertEquals(course1, result.get(0));
@@ -66,7 +69,7 @@ class CourseServiceImplTest {
         when(courseRepository.findByTopicIgnoreCaseAndDifficultyLevelIgnoreCase("Java", "Beginner"))
                 .thenReturn(Collections.singletonList(course1));
 
-        List<Course> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "");
+        List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "");
 
         assertEquals(1, result.size());
         assertEquals(course1, result.get(0));
@@ -77,7 +80,7 @@ class CourseServiceImplTest {
         when(courseRepository.findByTopicIgnoreCase("Java"))
                 .thenReturn(Collections.singletonList(course1));
 
-        List<Course> result = courseServiceImpl.getFilteredCourses("Java", "", "");
+        List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "", "");
 
         assertEquals(1, result.size());
         assertEquals(course1, result.get(0));
@@ -88,7 +91,7 @@ class CourseServiceImplTest {
         when(courseRepository.findByInstructorIgnoreCase("PythonTechie"))
                 .thenReturn(Collections.singletonList(course2));
 
-        List<Course> result = courseServiceImpl.getFilteredCourses("", "", "PythonTechie");
+        List<CourseDTO> result = courseServiceImpl.getFilteredCourses("", "", "PythonTechie");
 
         assertEquals(1, result.size());
         assertEquals(course2, result.get(0));
@@ -98,7 +101,7 @@ class CourseServiceImplTest {
     void testGetFilteredCourses_withNoFilters_returnsAllCourses() {
         when(courseRepository.findAll()).thenReturn(Arrays.asList(course1, course2));
 
-        List<Course> result = courseServiceImpl.getFilteredCourses("", "", "");
+        List<CourseDTO> result = courseServiceImpl.getFilteredCourses("", "", "");
 
         assertEquals(2, result.size());
         assertEquals(course1, result.get(0));

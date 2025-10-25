@@ -1,7 +1,8 @@
-package com.thoughtworks.skillpilot.DTO;
-import com.thoughtworks.skillpilot.dto.LessonDTO;
+package com.thoughtworks.skillpilot.dto;
+import com.thoughtworks.skillpilot.model.Course;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CourseDTO {
     private String topic;
@@ -13,13 +14,17 @@ public class CourseDTO {
     public CourseDTO() {
     }
 
-    public CourseDTO(String topic, String instructor, String description, String difficultyLevel, List<LessonDTO> lessons) {
-        this.topic = topic;
-        this.instructor = instructor;
-        this.description = description;
-        this.difficultyLevel = difficultyLevel;
-        this.lessons = lessons;
+    public CourseDTO(Course course) {
+        this.topic = course.getTopic();
+        this.instructor = course.getInstructor();
+        this.description = course.getDescription();
+        this.difficultyLevel = course.getDifficultyLevel();
+        this.lessons = course.getLessonList()
+                .stream()
+                .map(LessonDTO::new)
+                .collect(Collectors.toList());
     }
+
 
     public String getTopic() {
         return topic;

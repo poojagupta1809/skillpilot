@@ -1,5 +1,6 @@
 package com.thoughtworks.skillpilot.controller;
 
+import com.thoughtworks.skillpilot.dto.CourseDTO;
 import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
 import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.service.CourseService;
@@ -23,8 +24,8 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping("/view")
-    public ResponseEntity<?> getAllCoursesForLearner() {
+    @GetMapping("/admin/view")
+    public ResponseEntity<?> getAllCoursesForAdmin() {
         return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
     }
 
@@ -52,8 +53,13 @@ public class CourseController {
         return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
     }
 
+    @GetMapping("/view")
+    public List<CourseDTO> getAllCoursesForLearner() {
+        return courseService.getAllCourses();
+    }
+
     @GetMapping("/filter")
-    public List<Course> getFilteredCourses(
+    public List<CourseDTO> getFilteredCourses(
             @RequestParam(required = false) String topic,
             @RequestParam(required = false) String difficultyLevel,
             @RequestParam(required = false) String instructorName
