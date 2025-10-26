@@ -1,24 +1,49 @@
-name: CI Build
+name: blog_CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ master]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0 # Or any other desired MySQL version
+        env:
+          MYSQL_ROOT_PASSWORD: password # Use GitHub Secrets for sensitive data
+          MYSQL_DATABASE: SkillPilotDb
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 172.18.0.1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
           java-version: '17'
+          distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean compile
+      - name: Compile
+        run: mvn --batch-mode compile
 
+      - name: Spotless Check
+        run: mvn --batch-mode spotless:check
+
+      - name: Build (package)
+        run: mvn --batch-mode package
+
+      - name: Test
+        run: mvn --batch-mode test
+        env:
+          DB_HOST: 172.18.0.1 # Connect to the service's internal IP or localhost as seen from the job
+          DB_USER: root
+          DB_PASSWORD: password
+          DB_NAME: SkillPilotDb
