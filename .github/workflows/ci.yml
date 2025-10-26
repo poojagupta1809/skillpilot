@@ -1,4 +1,4 @@
-name: blog_CI
+name: skillpilot_CI
 
 on:
   push:
