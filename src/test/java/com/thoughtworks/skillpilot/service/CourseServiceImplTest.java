@@ -1,4 +1,4 @@
-package com.thoughtworks.skillpilot.service;
+package com.thoughtworks.skillpilot.Service;
 
 import com.thoughtworks.skillpilot.dto.CourseAdminDTO;
 import com.thoughtworks.skillpilot.dto.CourseDTO;
@@ -6,6 +6,7 @@ import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
 import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
+import com.thoughtworks.skillpilot.service.CourseServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -135,7 +136,7 @@ CourseServiceImplTest {
         sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
         when(courseRepository.findAll()).thenReturn(List.of(sampleCourse));
 
-        List<Course> courses = courseServiceImpl.getAllCourses();
+        List<CourseDTO> courses = courseServiceImpl.getAllCourses();
 
         assertEquals(1, courses.size());
         assertEquals("Spring", courses.get(0).getTopic());
