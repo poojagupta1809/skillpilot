@@ -1,4 +1,4 @@
-package com.thoughtworks.skillpilot.DTO;
+package com.thoughtworks.skillpilot.dto;
 
 import com.thoughtworks.skillpilot.model.EnrollmentStatus;
 

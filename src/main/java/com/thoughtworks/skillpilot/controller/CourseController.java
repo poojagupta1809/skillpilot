@@ -32,13 +32,8 @@ public class CourseController {
 
     @PostMapping(value = "/add", consumes = "application/json")
     public ResponseEntity<?> addCourse(@Valid @RequestBody Course course) {
-        try {
-            return new ResponseEntity<>(courseService.createCourse(course), HttpStatus.CREATED);
-        } catch (CourseAlreadyExistException e) {
-            return ResponseEntity
-                    .status(HttpStatus.CONFLICT)
-                    .body("User with this ID already exists!");
-        }
+        Course createdCourse = courseService.createCourse(course);
+        return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

@@ -48,19 +48,30 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         }
 
         Optional<Enrollment> existing = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId);
+
         if (existing.isPresent()) {
-            throw new DuplicateEnrollmentException("User " + userId + " is already enrolled in course " + courseId);
+            Enrollment enrollment = existing.get();
+
+            if (enrollment.getStatus() == EnrollmentStatus.ACTIVE) {
+                throw new DuplicateEnrollmentException("User " + userId + " is already actively enrolled in course " + courseId);
+            }
+
+            // Reactivate unenrolled enrollment to enroll again for a course
+            if (enrollment.getStatus() == EnrollmentStatus.UNENROLLED) {
+                enrollment.setStatus(EnrollmentStatus.ACTIVE);
+                return enrollmentRepository.save(enrollment);
+            }
         }
 
+        // Create a new enrollment if none exists
         User user = userRepository.findById(userId).orElseThrow();
         Course course = courseRepository.findById(courseId).orElseThrow();
 
-        Enrollment enrollment = new Enrollment(user, course);
-        enrollment.setStatus(EnrollmentStatus.ACTIVE);
+        Enrollment newEnrollment = new Enrollment(user, course);
+        newEnrollment.setStatus(EnrollmentStatus.ACTIVE);
 
-        return enrollmentRepository.save(enrollment);
+        return enrollmentRepository.save(newEnrollment);
     }
-
 
     // Unenroll a user from a course
 

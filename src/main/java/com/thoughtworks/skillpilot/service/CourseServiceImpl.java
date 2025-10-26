@@ -24,17 +24,11 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course createCourse(Course course) {
-        if (course.getCourseId() != null && courseRepository.existsById(course.getCourseId())) {
+        if (course.getCourseId() != null) {
             throw new CourseAlreadyExistException("Course with this ID already exists!");
         }
         course.setCourseId(null);
-        try {
-            courseRepository.save(course);
-            return course;
-        } catch (RuntimeException e) {
-            log.error(e.getMessage());
-            return null;
-        }
+        return courseRepository.save(course);
     }
 
     @Override
