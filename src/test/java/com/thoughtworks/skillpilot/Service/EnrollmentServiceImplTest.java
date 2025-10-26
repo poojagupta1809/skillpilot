@@ -84,7 +84,7 @@ class EnrollmentServiceImplTest {
         when(enrollmentRepository.findByUser_UserIdAndCourse_CourseId(1, 2)).thenReturn(Optional.of(new Enrollment()));
 
         Exception ex = assertThrows(DuplicateEnrollmentException.class, () -> enrollmentService.enrollLearnerInCourse(1, 2));
-        assertEquals("User 1 is already enrolled in course 2", ex.getMessage());
+        assertEquals("User 1 is already actively enrolled in course 2", ex.getMessage());
     }
 
     @Test
