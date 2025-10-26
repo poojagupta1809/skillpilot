@@ -2,45 +2,44 @@ package com.thoughtworks.skillpilot.dto;
 
 public class UserResponseDTO {
 
-    private String username;
-    private String email;
-    private String role;
-    private int userId;
+  private String username;
+  private String email;
+  private String role;
+  private int userId;
 
-    public int getUserId() {
-        return userId;
-    }
+  public int getUserId() {
+    return userId;
+  }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+  public void setUserId(int userId) {
+    this.userId = userId;
+  }
 
-    public String getUsername() {
+  public String getUsername() {
 
-        return username;
-    }
+    return username;
+  }
 
-    public void setUsername(String username) {
+  public void setUsername(String username) {
 
-        this.username = username;
-    }
+    this.username = username;
+  }
 
-    public String getEmail() {
+  public String getEmail() {
 
-        return email;
-    }
+    return email;
+  }
 
-    public void setEmail(String email) {
+  public void setEmail(String email) {
 
-        this.email = email;
-    }
+    this.email = email;
+  }
 
+  public String getRole() {
+    return role;
+  }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+  public void setRole(String role) {
+    this.role = role;
+  }
 }

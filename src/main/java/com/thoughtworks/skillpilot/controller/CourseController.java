@@ -1,74 +1,70 @@
 package com.thoughtworks.skillpilot.controller;
 
 import com.thoughtworks.skillpilot.dto.CourseDTO;
-import com.thoughtworks.skillpilot.exception.CourseAlreadyExistException;
 import com.thoughtworks.skillpilot.model.Course;
 import com.thoughtworks.skillpilot.service.CourseService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {
 
-    CourseService courseService;
+  CourseService courseService;
 
-    @Autowired
-    public CourseController(CourseService courseService) {
+  @Autowired
+  public CourseController(CourseService courseService) {
 
-        this.courseService = courseService;
+    this.courseService = courseService;
+  }
+
+  @GetMapping("/admin/view")
+  public ResponseEntity<?> getAllCoursesForAdmin() {
+    return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
+  }
+
+  @PostMapping(value = "/add", consumes = "application/json")
+  public ResponseEntity<?> addCourse(@Valid @RequestBody Course course) {
+    Course createdCourse = courseService.createCourse(course);
+    return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<?> deleteProduct(@PathVariable int id) {
+    courseService.removeCourseById(id);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted Successfully");
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<?> editCourse(@PathVariable int id, @Valid @RequestBody Course course) {
+    Course updatedProduct = courseService.updateCourse(id, course);
+    return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+  }
+
+  @GetMapping("/view")
+  public List<CourseDTO> getAllCoursesForLearner() {
+    return courseService.getAllCourses();
+  }
+
+  @GetMapping("/filter")
+  public List<CourseDTO> getFilteredCourses(
+      @RequestParam(required = false) String topic,
+      @RequestParam(required = false) String difficultyLevel,
+      @RequestParam(required = false) String instructorName) {
+    return courseService.getFilteredCourses(topic, difficultyLevel, instructorName);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<?> getCourseById(@PathVariable("id") int id) {
+    Course course = courseService.getCourseById(id);
+    if (course != null) {
+      return ResponseEntity.ok(course);
+    } else {
+      return ResponseEntity.status(404).body("Course not found with ID: " + id);
     }
-
-    @GetMapping("/admin/view")
-    public ResponseEntity<?> getAllCoursesForAdmin() {
-        return new ResponseEntity<>(courseService.getAllCourses(), HttpStatus.OK);
-    }
-
-
-    @PostMapping(value = "/add", consumes = "application/json")
-    public ResponseEntity<?> addCourse(@Valid @RequestBody Course course) {
-        Course createdCourse = courseService.createCourse(course);
-        return new ResponseEntity<>(createdCourse, HttpStatus.CREATED);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable int id) {
-        courseService.removeCourseById(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted Successfully");
-    }
-
-    @PatchMapping("/{id}")
-    public ResponseEntity<?> editCourse(@PathVariable int id, @Valid @RequestBody Course course) {
-        Course updatedProduct = courseService.updateCourse(id, course);
-        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
-    }
-
-    @GetMapping("/view")
-    public List<CourseDTO> getAllCoursesForLearner() {
-        return courseService.getAllCourses();
-    }
-
-    @GetMapping("/filter")
-    public List<CourseDTO> getFilteredCourses(
-            @RequestParam(required = false) String topic,
-            @RequestParam(required = false) String difficultyLevel,
-            @RequestParam(required = false) String instructorName
-    ) {
-        return courseService.getFilteredCourses(topic, difficultyLevel, instructorName);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getCourseById(@PathVariable("id") int id) {
-        Course course = courseService.getCourseById(id);
-        if (course != null) {
-            return ResponseEntity.ok(course);
-        } else {
-            return ResponseEntity.status(404).body("Course not found with ID: " + id);
-        }
-    }
+  }
 }

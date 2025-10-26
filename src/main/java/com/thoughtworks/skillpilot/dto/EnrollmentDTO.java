@@ -1,83 +1,87 @@
 package com.thoughtworks.skillpilot.dto;
 
 import com.thoughtworks.skillpilot.model.EnrollmentStatus;
-
 import java.time.LocalDateTime;
 
 public class EnrollmentDTO {
-    private int enrollmentId;
-    private int userId;
-    private String userName;
-    private int courseId;
-    private String courseTitle;
-    private EnrollmentStatus status;
-    private LocalDateTime enrollmentDate;
+  private int enrollmentId;
+  private int userId;
+  private String userName;
+  private int courseId;
+  private String courseTitle;
+  private EnrollmentStatus status;
+  private LocalDateTime enrollmentDate;
 
+  public EnrollmentDTO(
+      int enrollmentId,
+      int userId,
+      String userName,
+      int courseId,
+      String courseTitle,
+      EnrollmentStatus status,
+      LocalDateTime enrollmentDate) {
+    this.enrollmentId = enrollmentId;
+    this.userId = userId;
+    this.userName = userName;
+    this.courseId = courseId;
+    this.courseTitle = courseTitle;
+    this.status = status;
+    this.enrollmentDate = enrollmentDate;
+  }
 
-    public EnrollmentDTO(int enrollmentId, int userId, String userName, int courseId, String courseTitle, EnrollmentStatus status, LocalDateTime enrollmentDate) {
-        this.enrollmentId = enrollmentId;
-        this.userId = userId;
-        this.userName = userName;
-        this.courseId = courseId;
-        this.courseTitle = courseTitle;
-        this.status = status;
-        this.enrollmentDate = enrollmentDate;
-    }
+  public int getEnrollmentId() {
+    return enrollmentId;
+  }
 
+  public void setEnrollmentId(int enrollmentId) {
+    this.enrollmentId = enrollmentId;
+  }
 
-    public int getEnrollmentId() {
-        return enrollmentId;
-    }
+  public int getUserId() {
+    return userId;
+  }
 
-    public void setEnrollmentId(int enrollmentId) {
-        this.enrollmentId = enrollmentId;
-    }
+  public void setUserId(int userId) {
+    this.userId = userId;
+  }
 
-    public int getUserId() {
-        return userId;
-    }
+  public String getUserName() {
+    return userName;
+  }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  public int getCourseId() {
+    return courseId;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public void setCourseId(int courseId) {
+    this.courseId = courseId;
+  }
 
-    public int getCourseId() {
-        return courseId;
-    }
+  public String getCourseTitle() {
+    return courseTitle;
+  }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
+  public void setCourseTitle(String courseTitle) {
+    this.courseTitle = courseTitle;
+  }
 
-    public String getCourseTitle() {
-        return courseTitle;
-    }
+  public EnrollmentStatus getStatus() {
+    return status;
+  }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
-    }
+  public void setStatus(EnrollmentStatus status) {
+    this.status = status;
+  }
 
-    public EnrollmentStatus getStatus() {
-        return status;
-    }
+  public LocalDateTime getEnrollmentDate() {
+    return enrollmentDate;
+  }
 
-    public void setStatus(EnrollmentStatus status) {
-        this.status = status;
-    }
-
-    public LocalDateTime getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(LocalDateTime enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
+  public void setEnrollmentDate(LocalDateTime enrollmentDate) {
+    this.enrollmentDate = enrollmentDate;
+  }
 }

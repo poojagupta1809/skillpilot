@@ -2,94 +2,88 @@ package com.thoughtworks.skillpilot.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "enrollment",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "course_id"}))
+@Table(
+    name = "enrollment",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "course_id"}))
 public class Enrollment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer enrollmentId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer enrollmentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonBackReference
-    private User user;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id", nullable = false)
+  @JsonBackReference
+  private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", nullable = false)
-    @JsonBackReference("course-enrollment")
-    private Course course;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "course_id", nullable = false)
+  @JsonBackReference("course-enrollment")
+  private Course course;
 
-    private EnrollmentStatus status = EnrollmentStatus.ACTIVE;
+  private EnrollmentStatus status = EnrollmentStatus.ACTIVE;
 
+  private LocalDateTime enrollmentDate = LocalDateTime.now();
+  private LocalDateTime completionDate;
 
-    private LocalDateTime enrollmentDate = LocalDateTime.now();
-    private LocalDateTime completionDate;
+  // Constructors
+  public Enrollment() {}
 
+  public Enrollment(User user, Course course) {
+    this.user = user;
+    this.course = course;
+  }
 
-    // Constructors
-    public Enrollment() {
-    }
+  // Getters and Setters
 
-    public Enrollment(User user, Course course) {
-        this.user = user;
-        this.course = course;
-    }
+  public Integer getEnrollmentId() {
+    return enrollmentId;
+  }
 
-    // Getters and Setters
+  public void setEnrollmentId(Integer enrollmentId) {
+    this.enrollmentId = enrollmentId;
+  }
 
-    public Integer getEnrollmentId() {
-        return enrollmentId;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public void setEnrollmentId(Integer enrollmentId) {
-        this.enrollmentId = enrollmentId;
-    }
+  public void setUser(User user) {
+    this.user = user;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public EnrollmentStatus getStatus() {
+    return status;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setStatus(EnrollmentStatus status) {
+    this.status = status;
+  }
 
-    public EnrollmentStatus getStatus() {
-        return status;
-    }
+  public LocalDateTime getCompletionDate() {
+    return completionDate;
+  }
 
-    public void setStatus(EnrollmentStatus status) {
-        this.status = status;
-    }
+  public void setCompletionDate(LocalDateTime completionDate) {
+    this.completionDate = completionDate;
+  }
 
-    public LocalDateTime getCompletionDate() {
-        return completionDate;
-    }
+  public Course getCourse() {
+    return course;
+  }
 
-    public void setCompletionDate(LocalDateTime completionDate) {
-        this.completionDate = completionDate;
-    }
+  public void setCourse(Course course) {
+    this.course = course;
+  }
 
-    public Course getCourse() {
-        return course;
-    }
+  public LocalDateTime getEnrollmentDate() {
+    return enrollmentDate;
+  }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public LocalDateTime getEnrollmentDate() {
-        return enrollmentDate;
-    }
-
-    public void setEnrollmentDate(LocalDateTime enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
-
+  public void setEnrollmentDate(LocalDateTime enrollmentDate) {
+    this.enrollmentDate = enrollmentDate;
+  }
 }

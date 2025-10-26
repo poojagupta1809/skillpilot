@@ -2,17 +2,16 @@ package com.thoughtworks.skillpilot.service;
 
 import com.thoughtworks.skillpilot.dto.LessonAdminDTO;
 import com.thoughtworks.skillpilot.dto.LessonDTO;
-
 import java.util.List;
 
 public interface LessonService {
-    LessonAdminDTO createLesson(int courseId, LessonAdminDTO lessonDTO);
+  LessonAdminDTO createLesson(int courseId, LessonAdminDTO lessonDTO);
 
-    LessonAdminDTO updateLesson(int lessonId, LessonAdminDTO lessonDTO);
+  LessonAdminDTO updateLesson(int lessonId, LessonAdminDTO lessonDTO);
 
-    void deleteLessonById(int lessonId);
+  void deleteLessonById(int lessonId);
 
-    List<LessonAdminDTO> getLessonsByCourseId(int courseId);
+  List<LessonAdminDTO> getLessonsByCourseId(int courseId);
 
-    List<LessonDTO> getCourseLessonsForLearners(int courseId);
+  List<LessonDTO> getCourseLessonsForLearners(int courseId);
 }

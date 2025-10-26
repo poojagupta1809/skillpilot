@@ -101,16 +101,14 @@
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>2.43.0</version>
                 <configuration>
-                    <!-- Format Java sources and tests using google-java-format -->
                     <java>
-                        <target>src/main/java/**/*.java,src/test/java/**/*.java</target>
-                        <googleJavaFormat>
-                            <!-- use stable version shipped with plugin; no extra config required -->
-                        </googleJavaFormat>
+                        <includes>
+                            <include>src/main/java/**/*.java</include>
+                        </includes>
+                        <googleJavaFormat/>
                     </java>
                 </configuration>
                 <executions>
-                    <!-- run 'spotless:check' during the verify phase so CI fails on unformatted files -->
                     <execution>
                         <id>spotless-check</id>
                         <goals>

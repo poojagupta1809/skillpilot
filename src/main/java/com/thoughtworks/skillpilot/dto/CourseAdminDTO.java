@@ -1,6 +1,3 @@
 package com.thoughtworks.skillpilot.dto;
 
-public class CourseAdminDTO {
-
-
-}
+public class CourseAdminDTO {}
