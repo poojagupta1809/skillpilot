@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CourseDTO {
+    private Integer courseId;
     private String topic;
     private String instructor;
     private String description;
@@ -15,6 +16,7 @@ public class CourseDTO {
     }
 
     public CourseDTO(Course course) {
+        this.courseId = course.getCourseId();
         this.topic = course.getTopic();
         this.instructor = course.getInstructor();
         this.description = course.getDescription();
@@ -25,6 +27,9 @@ public class CourseDTO {
                 .collect(Collectors.toList());
     }
 
+    public Integer getCourseId() { return courseId; }
+
+    public void setCourseId(Integer courseId) { this.courseId = courseId; }
 
     public String getTopic() {
         return topic;

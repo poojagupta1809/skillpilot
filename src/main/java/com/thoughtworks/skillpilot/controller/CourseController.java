@@ -61,4 +61,14 @@ public class CourseController {
     ) {
         return courseService.getFilteredCourses(topic, difficultyLevel, instructorName);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCourseById(@PathVariable("id") int id) {
+        Course course = courseService.getCourseById(id);
+        if (course != null) {
+            return ResponseEntity.ok(course);
+        } else {
+            return ResponseEntity.status(404).body("Course not found with ID: " + id);
+        }
+    }
 }

@@ -5,6 +5,15 @@ public class UserResponseDTO {
     private String username;
     private String email;
     private String role;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getUsername() {
 

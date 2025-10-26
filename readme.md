@@ -1,27 +1,90 @@
-SKILLPILOT
--Learning Courses and Enrollment System
 
-Description
-The Learning Courses and Enrollment System is a streamlined online platform designed to help users discover, enroll in, and complete learning courses. It provides learners with an intuitive interface to browse courses, track their progress, and complete quizzes. Administrators have tools to manage courses, monitor enrollments, and analyze learner progress.
+# SkillPilot — Learning Courses and Enrollment System
 
-Features
+## Overview
 
-For Learners:
+**SkillPilot** is a mini online platform that allows users (**learners** and **admins**) to discover, enroll in, and complete learning courses.
+It’s a simplified version of a Learning Management System (LMS) like Udemy, focusing on the **core features** of course browsing, enrollment, and progress tracking.
 
-Course Browsing: View all available courses and filter by topic, difficulty, or instructor.
-Enrollment Management: Enroll or unenroll in courses as needed.
-Progress Tracking: Mark lessons as complete and view overall progress percentage.
-Assessment: Take simple quizzes to evaluate understanding.
-Completion Certificate: Download certificates upon finishing a course.
+---
 
-For Administrators:
+## User Roles
 
-Course Management: Create, edit, and delete courses; add or update lessons.
-Enrollment Monitoring: View enrolled users per course and manage enrollments.
-Progress & Completion Tracking: Access detailed statistics on learner progress and completion.
-Reports & Analytics: Generate reports on enrollment, course completion, and engagement.
-User Management: Remove learners from courses if necessary.
+### Learner (Student)
 
-Core Technologies:
+* Browse and search for courses
+* Enroll or unenroll in courses
+* Access lessons and quizzes
+* Track learning progress and completion
+* Download completion certificates
 
-Backend: Java, SpringBoot
+### Admin
+
+* Create, edit, and delete courses
+* Manage lessons and course content
+* Monitor enrollments and learner progress
+* Generate reports and analytics
+
+---
+
+## Core Features / User Stories
+
+###  Course Listing and Browsing
+
+* View all available courses
+* Filter by topic, difficulty, or instructor
+
+###  Course Enrollment
+
+* Enroll or unenroll from courses
+* Admin can view total enrollments
+
+###  Learning Progress
+
+* Mark lessons as complete
+* Track completion percentage
+* Download a certificate upon course completion
+* Admin can view learner progress
+
+### Course Management (Admin)
+
+* Add, edit, or delete courses and lessons
+
+### Enrollment & Progress Monitoring (Admin)
+
+* View all enrolled learners
+* Remove inactive or duplicate learners
+
+### Reports & Analytics (Admin)
+
+* View course statistics (enrollments, completion rates)
+* Generate reports and view total engagement metrics
+
+---
+
+## Technologies Used
+
+**Frontend:** HTML, CSS, JavaScript, React
+**Backend:** Java (Spring Boot), JUnit5, Mockito, Maven
+**Database:** MySQL
+
+---
+
+## Future Enhancements
+
+* Add instructor roles for course creation and management
+* Enable batch scheduling and cohort-based learning
+* Add payments for premium courses
+* Improve quiz and assessment features
+
+---
+
+## Contributors
+
+* Dhanashree Sonwane
+* Sushmita Singh
+* Shivani Singh
+* Pooja Gupta
+* Hermina Garg
+
+---
