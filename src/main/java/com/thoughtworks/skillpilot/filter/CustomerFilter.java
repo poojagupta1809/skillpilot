@@ -16,35 +16,57 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerFilter extends GenericFilter {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerFilter.class);
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        CachedBodyHttpServletRequest cachedBodyHttpServletRequest =
-                new CachedBodyHttpServletRequest((HttpServletRequest) request);
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        
 
+        CachedBodyHttpServletRequest cachedBodyHttpServletRequest =
+                new CachedBodyHttpServletRequest(httpRequest);
 
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+        String origin = httpRequest.getHeader("Origin");
+        if (origin != null && !origin.isEmpty()) {
+            // when credentials are allowed, you cannot use '*', must echo the origin
+            httpResponse.setHeader("Access-Control-Allow-Origin", origin);
+            httpResponse.setHeader("Vary", "Origin");
+        } else {
+            httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+        }
         httpResponse.setHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS");
         httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
-        httpResponse.setHeader("Access-Control-Allow-Headers", "*");
+        httpResponse.setHeader("Access-Control-Allow-Headers", "Origin, Content-Type, Accept, Authorization, X-Requested-With");
+        httpResponse.setHeader("Access-Control-Expose-Headers", "Authorization");
 
+        // Allow preflight requests to pass through without authentication check
+        if ("OPTIONS".equalsIgnoreCase(httpRequest.getMethod())) {
+            // respond directly for preflight
+            httpResponse.setStatus(HttpServletResponse.SC_OK);
+            return;
+        }
 
-        //to handle preflight request for the first time which is raised by web browser , when ui is based on javascript , to check the availability of server
+        //to handle login/register endpoints without auth
         if(cachedBodyHttpServletRequest.getServletPath().equals("/api/users/login") || cachedBodyHttpServletRequest.getServletPath().equals("/api/users/register-user")) {
-
             chain.doFilter(cachedBodyHttpServletRequest, response);
         } else {
             String authHeader = cachedBodyHttpServletRequest.getHeader("Authorization");
 
-            if ((authHeader == null) || (!authHeader.startsWith("Bearer"))) {
-                throw new ServletException("JWT Token is missing");
+            // Expect header in format: "Bearer <token>" (note the space)
+            if ((authHeader == null) || (!authHeader.startsWith("Bearer "))) {
+                httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JWT Token is missing");
+                return;
             }
 
             String token1 = authHeader.substring(7);
@@ -63,10 +85,12 @@ public class CustomerFilter extends GenericFilter {
                 httpsession.setAttribute("userloggedin", claim.getAudience());
 
             } catch (SignatureException sign) {
-                throw new ServletException("Signature mismatch");
+                httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Signature mismatch");
+                return;
 
             } catch (MalformedJwtException malforn) {
-                throw new ServletException("Some one modified token");
+                httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Some one modified token");
+                return;
             }
             chain.doFilter(cachedBodyHttpServletRequest, httpResponse);
         }
