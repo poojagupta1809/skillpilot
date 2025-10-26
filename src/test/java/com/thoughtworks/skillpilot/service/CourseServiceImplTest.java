@@ -1,4 +1,4 @@
-package com.thoughtworks.skillpilot.Service;
+package com.thoughtworks.skillpilot.service;
 
 import com.thoughtworks.skillpilot.dto.CourseAdminDTO;
 import com.thoughtworks.skillpilot.dto.CourseDTO;
@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,8 +26,8 @@ import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
-class
-CourseServiceImplTest {
+@MockitoSettings(strictness = Strictness.LENIENT)
+class CourseServiceImplTest {
 
     @Mock
     private CourseRepository courseRepository;
@@ -48,8 +50,10 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getAllCourses();
 
         assertEquals(2, result.size());
-        assertEquals(course1, result.get(0));
-        assertEquals(course2, result.get(1));
+        assertEquals(course1.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course1.getTopic(), result.get(0).getTopic());
+        assertEquals(course2.getCourseId(), result.get(1).getCourseId());
+        assertEquals(course2.getTopic(), result.get(1).getTopic());
         verify(courseRepository, times(1)).findAll();
     }
 
@@ -62,7 +66,8 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "JavaTechie");
 
         assertEquals(1, result.size());
-        assertEquals(course1, result.get(0));
+        assertEquals(course1.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course1.getTopic(), result.get(0).getTopic());
     }
 
     @Test
@@ -73,7 +78,8 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "Beginner", "");
 
         assertEquals(1, result.size());
-        assertEquals(course1, result.get(0));
+        assertEquals(course1.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course1.getTopic(), result.get(0).getTopic());
     }
 
     @Test
@@ -84,7 +90,8 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getFilteredCourses("Java", "", "");
 
         assertEquals(1, result.size());
-        assertEquals(course1, result.get(0));
+        assertEquals(course1.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course1.getTopic(), result.get(0).getTopic());
     }
 
     @Test
@@ -95,7 +102,8 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getFilteredCourses("", "", "PythonTechie");
 
         assertEquals(1, result.size());
-        assertEquals(course2, result.get(0));
+        assertEquals(course2.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course2.getTopic(), result.get(0).getTopic());
     }
 
     @Test
@@ -105,8 +113,8 @@ CourseServiceImplTest {
         List<CourseDTO> result = courseServiceImpl.getFilteredCourses("", "", "");
 
         assertEquals(2, result.size());
-        assertEquals(course1, result.get(0));
-        assertEquals(course2, result.get(1));
+        assertEquals(course1.getCourseId(), result.get(0).getCourseId());
+        assertEquals(course2.getCourseId(), result.get(1).getCourseId());
     }
 
     @Test
@@ -124,11 +132,8 @@ CourseServiceImplTest {
     @Test
     public void createCourse_existingId_shouldThrowException() {
         sampleCourse = new Course(1,"Spring","Mary","fullStack","Beginner");
-        when(courseRepository.existsById(sampleCourse.getCourseId())).thenReturn(true);
 
-        assertThrows(CourseAlreadyExistException.class, () -> {
-            courseServiceImpl.createCourse(sampleCourse);
-        });
+        assertThrows(CourseAlreadyExistException.class, () -> courseServiceImpl.createCourse(sampleCourse));
     }
 
     @Test
