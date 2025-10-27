@@ -15,7 +15,7 @@ public class LessonAdminDTO {
   private String title;
 
   private Integer lessonId;
-
+  @NotBlank(message = "Description cannot be empty")
   @Size(max = 500, message = "Description can't exceed 500 characters")
   private String description;
 

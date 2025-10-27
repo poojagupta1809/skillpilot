@@ -19,6 +19,7 @@ public class Lesson {
   @Size(max = 100)
   private String title;
 
+  @NotBlank(message = "Description cannot be empty")
   @Size(max = 500, message = "Description can't exceed 500 characters")
   @Column(length = 500)
   private String description; // short summary about the lesson
