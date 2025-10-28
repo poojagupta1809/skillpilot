@@ -4,13 +4,11 @@ import com.thoughtworks.skillpilot.exception.CourseNotFoundException;
 import com.thoughtworks.skillpilot.exception.DuplicateEnrollmentException;
 import com.thoughtworks.skillpilot.exception.EnrollmentNotFoundException;
 import com.thoughtworks.skillpilot.exception.UserNotFoundException;
-import com.thoughtworks.skillpilot.model.Course;
-import com.thoughtworks.skillpilot.model.Enrollment;
-import com.thoughtworks.skillpilot.model.EnrollmentStatus;
-import com.thoughtworks.skillpilot.model.User;
+import com.thoughtworks.skillpilot.model.*;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
 import com.thoughtworks.skillpilot.repository.EnrollmentRepository;
 import com.thoughtworks.skillpilot.repository.UserRepository;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,4 +156,39 @@ public class EnrollmentServiceImpl implements EnrollmentService {
 
     enrollmentRepository.delete(enrollment.get());
   }
+
+  @Override
+  public Integer calculateCompletionPercentage(int userId, int courseId, Integer completedLessons){
+        if(completedLessons>0) {
+            if (courseRepository.findById(courseId).isPresent()) {
+                Course course = courseRepository.findById(courseId).get();
+                List<Lesson> lessons = course.getLessonList();
+
+                if (lessons.isEmpty()) {
+                    return 0;
+                } else {
+                    if(completedLessons> lessons.size()){
+                        return 0;
+                    }
+                    return (completedLessons * 100) / lessons.size();
+                }
+
+
+            }
+        }
+
+        return 0;
+
+    }
+
+    public Integer updateLessonCompleted(int userId, int courseId, Integer completedLessons){
+        Optional<Enrollment> enrollmentOptional = enrollmentRepository.findByUser_UserIdAndCourse_CourseId(userId, courseId);
+        if(enrollmentOptional.isPresent()){
+            Enrollment enrollment = enrollmentOptional.get();
+            enrollment.setCompletedLessonsCount(completedLessons);
+            enrollmentRepository.save(enrollment);
+            return calculateCompletionPercentage(userId, courseId, completedLessons);
+        }
+        return null;
+    }
 }

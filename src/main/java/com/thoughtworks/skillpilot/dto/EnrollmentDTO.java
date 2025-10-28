@@ -8,9 +8,12 @@ public class EnrollmentDTO {
   private int userId;
   private String userName;
   private int courseId;
+
+
   private String courseTitle;
   private EnrollmentStatus status;
   private LocalDateTime enrollmentDate;
+  private int progressPercentage;
 
   public EnrollmentDTO(
       int enrollmentId,
@@ -84,4 +87,10 @@ public class EnrollmentDTO {
   public void setEnrollmentDate(LocalDateTime enrollmentDate) {
     this.enrollmentDate = enrollmentDate;
   }
+
+    public void setProgressPercentage(int progressPercentage) {
+        this.progressPercentage = progressPercentage;
+    }
+
+
 }

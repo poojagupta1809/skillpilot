@@ -24,4 +24,8 @@ public interface EnrollmentService {
 
   public void deleteEnrollmentByUserAndCourse(int userId, int courseId)
       throws EnrollmentNotFoundException; // Admin removes a specific learner
+
+    public Integer calculateCompletionPercentage(int userId, int courseId, Integer completedLessons);
+
+    public Integer updateLessonCompleted(int userId, int courseId, Integer completedLessons);
 }

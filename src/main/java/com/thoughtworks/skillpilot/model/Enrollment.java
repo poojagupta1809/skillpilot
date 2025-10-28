@@ -29,6 +29,10 @@ public class Enrollment {
   private LocalDateTime enrollmentDate = LocalDateTime.now();
   private LocalDateTime completionDate;
 
+
+    @Column(name = "completed_lessons")
+  private Integer completedLessonsCount=0;
+
   // Constructors
   public Enrollment() {}
 
@@ -86,4 +90,15 @@ public class Enrollment {
   public void setEnrollmentDate(LocalDateTime enrollmentDate) {
     this.enrollmentDate = enrollmentDate;
   }
+
+
+    public Integer getCompletedLessonsCount() {
+        return completedLessonsCount;
+    }
+
+    public void setCompletedLessonsCount(Integer completedLessonsCount) {
+        this.completedLessonsCount = completedLessonsCount;
+    }
+
+
 }
