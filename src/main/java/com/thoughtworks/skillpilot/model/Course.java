@@ -28,6 +28,11 @@ public class Course {
   private String description;
 
   private String difficultyLevel;
+
+  private String courseType;
+
+  private String price;
+
   @Column(length = 1000)
   private String imageUrl;
 
@@ -49,13 +54,23 @@ public class Course {
 
   public Course() {}
 
-  public Course(int courseId, String topic, String instructor, String description, String difficultyLevel, String imageUrl) {
+  public Course(
+      Integer courseId,
+      String topic,
+      String instructor,
+      String description,
+      String difficultyLevel,
+      String courseType,
+      String price,
+      String imageUrl) {
     this.courseId = courseId;
     this.topic = topic;
     this.instructor = instructor;
     this.description = description;
     this.difficultyLevel = difficultyLevel;
-    this.imageUrl= imageUrl;
+    this.courseType = courseType;
+    this.price = price;
+    this.imageUrl = imageUrl;
   }
 
   public Integer getCourseId() {
@@ -106,11 +121,27 @@ public class Course {
     this.enrollments = enrollments;
   }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  public String getCourseType() {
+    return courseType;
+  }
+
+  public void setCourseType(String courseType) {
+    this.courseType = courseType;
+  }
+
+  public String getPrice() {
+    return price;
+  }
+
+  public void setPrice(String price) {
+    this.price = price;
+  }
 }
