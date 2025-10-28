@@ -2,7 +2,6 @@ package com.thoughtworks.skillpilot.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.thoughtworks.skillpilot.model.Lesson;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -15,6 +14,7 @@ public class LessonAdminDTO {
   private String title;
 
   private Integer lessonId;
+
   @NotBlank(message = "Description cannot be empty")
   @Size(max = 500, message = "Description can't exceed 500 characters")
   private String description;
