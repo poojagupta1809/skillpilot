@@ -48,7 +48,7 @@ public class UserController {
 
   private String generateToken(UserDTO userObj) {
 
-    long expiry = 10_000_00;
+    long expiry = 30_000_00;
 
     return Jwts.builder()
         .setSubject(userObj.getEmail())
