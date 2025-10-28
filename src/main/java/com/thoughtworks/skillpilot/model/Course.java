@@ -28,6 +28,8 @@ public class Course {
   private String description;
 
   private String difficultyLevel;
+  @Column(length = 1000)
+  private String imageUrl;
 
   @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonManagedReference("course-enrollment")
@@ -47,13 +49,13 @@ public class Course {
 
   public Course() {}
 
-  public Course(
-      int courseId, String topic, String instructor, String description, String difficultyLevel) {
+  public Course(int courseId, String topic, String instructor, String description, String difficultyLevel, String imageUrl) {
     this.courseId = courseId;
     this.topic = topic;
     this.instructor = instructor;
     this.description = description;
     this.difficultyLevel = difficultyLevel;
+    this.imageUrl= imageUrl;
   }
 
   public Integer getCourseId() {
@@ -103,4 +105,12 @@ public class Course {
   public void setEnrollments(Set<Enrollment> enrollments) {
     this.enrollments = enrollments;
   }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

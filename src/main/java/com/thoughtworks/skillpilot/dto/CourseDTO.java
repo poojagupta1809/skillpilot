@@ -10,6 +10,7 @@ public class CourseDTO {
   private String instructor;
   private String description;
   private String difficultyLevel;
+  private String imageUrl;
   private List<LessonDTO> lessons;
 
   public CourseDTO() {}
@@ -20,6 +21,7 @@ public class CourseDTO {
     this.instructor = course.getInstructor();
     this.description = course.getDescription();
     this.difficultyLevel = course.getDifficultyLevel();
+    this.imageUrl = course.getImageUrl();
     this.lessons = course.getLessonList().stream().map(LessonDTO::new).collect(Collectors.toList());
   }
 
@@ -70,4 +72,12 @@ public class CourseDTO {
   public void setLessons(List<LessonDTO> lessons) {
     this.lessons = lessons;
   }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
