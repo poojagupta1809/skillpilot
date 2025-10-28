@@ -11,6 +11,8 @@ public class CourseDTO {
   private String description;
   private String difficultyLevel;
   private String imageUrl;
+  private String courseType;
+  private String price;
   private List<LessonDTO> lessons;
 
   public CourseDTO() {}
@@ -22,6 +24,8 @@ public class CourseDTO {
     this.description = course.getDescription();
     this.difficultyLevel = course.getDifficultyLevel();
     this.imageUrl = course.getImageUrl();
+    this.courseType = course.getCourseType();
+    this.price = course.getPrice();
     this.lessons = course.getLessonList().stream().map(LessonDTO::new).collect(Collectors.toList());
   }
 
@@ -73,11 +77,27 @@ public class CourseDTO {
     this.lessons = lessons;
   }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+  public String getImageUrl() {
+    return imageUrl;
+  }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+  public void setImageUrl(String imageUrl) {
+    this.imageUrl = imageUrl;
+  }
+
+  public String getCourseType() {
+    return courseType;
+  }
+
+  public void setCourseType(String courseType) {
+    this.courseType = courseType;
+  }
+
+  public String getPrice() {
+    return price;
+  }
+
+  public void setPrice(String price) {
+    this.price = price;
+  }
 }
