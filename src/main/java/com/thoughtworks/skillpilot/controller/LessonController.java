@@ -1,6 +1,7 @@
 package com.thoughtworks.skillpilot.controller;
 
 import com.thoughtworks.skillpilot.dto.LessonAdminDTO;
+import com.thoughtworks.skillpilot.service.LessonService;
 import com.thoughtworks.skillpilot.service.LessonServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,10 @@ public class LessonController {
   @GetMapping("/{courseId}/lessons/learner")
   public ResponseEntity<?> getLessonsForCourseByLearner(@PathVariable int courseId) {
     return new ResponseEntity<>(lessonService.getCourseLessonsForLearners(courseId), HttpStatus.OK);
+  }
+  @GetMapping("/lesson/{lessonId}")
+    public ResponseEntity<?> getLessonById(@PathVariable int lessonId)
+  {
+      return new ResponseEntity<>(lessonService.getLessonById(lessonId), HttpStatus.OK);
   }
 }

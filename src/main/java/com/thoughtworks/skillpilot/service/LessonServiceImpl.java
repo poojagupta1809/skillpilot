@@ -10,6 +10,7 @@ import com.thoughtworks.skillpilot.model.Lesson;
 import com.thoughtworks.skillpilot.repository.CourseRepository;
 import com.thoughtworks.skillpilot.repository.LessonRepository;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
@@ -85,5 +86,14 @@ public class LessonServiceImpl implements LessonService {
     }
     List<Lesson> lessons = lessonRepository.findByCourse_CourseId(courseId);
     return lessons.stream().map(LessonDTO::new).collect(Collectors.toList());
+  }
+  public Lesson getLessonById(int lessonId)
+  {
+      Optional<Lesson> lesson=lessonRepository.findById(lessonId);
+      if(lesson.isPresent())
+          return lesson.get();
+      else throw new LessonNotFoundException("Lesson not found with id " + lessonId);
+
+
   }
 }
