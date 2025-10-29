@@ -43,7 +43,7 @@ public class CustomerFilter extends GenericFilter {
     } else {
       httpResponse.setHeader("Access-Control-Allow-Origin", "*");
     }
-    httpResponse.setHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS");
+    httpResponse.setHeader("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS,PATCH");
     httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
     httpResponse.setHeader(
         "Access-Control-Allow-Headers",
