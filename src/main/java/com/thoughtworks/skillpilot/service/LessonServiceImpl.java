@@ -87,13 +87,10 @@ public class LessonServiceImpl implements LessonService {
     List<Lesson> lessons = lessonRepository.findByCourse_CourseId(courseId);
     return lessons.stream().map(LessonDTO::new).collect(Collectors.toList());
   }
-  public Lesson getLessonById(int lessonId)
-  {
-      Optional<Lesson> lesson=lessonRepository.findById(lessonId);
-      if(lesson.isPresent())
-          return lesson.get();
-      else throw new LessonNotFoundException("Lesson not found with id " + lessonId);
 
-
+  public Lesson getLessonById(int lessonId) {
+    Optional<Lesson> lesson = lessonRepository.findById(lessonId);
+    if (lesson.isPresent()) return lesson.get();
+    else throw new LessonNotFoundException("Lesson not found with id " + lessonId);
   }
 }
