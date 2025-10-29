@@ -64,7 +64,13 @@ public class CourseServiceImpl implements CourseService {
         courseToUpdate.setInstructor(course.getInstructor());
       }
       if (course.getImageUrl() != null) {
-            courseToUpdate.setImageUrl(course.getImageUrl());
+        courseToUpdate.setImageUrl(course.getImageUrl());
+      }
+      if (course.getCourseType() != null) {
+        courseToUpdate.setCourseType(course.getCourseType());
+      }
+      if (course.getPrice() != null) {
+        courseToUpdate.setPrice(course.getPrice());
       }
       try {
         courseRepository.save(courseToUpdate);
