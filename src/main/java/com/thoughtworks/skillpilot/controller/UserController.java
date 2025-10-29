@@ -42,7 +42,7 @@ public class UserController {
       return new ResponseEntity<>(responseMap, HttpStatus.OK);
 
     } else {
-      return new ResponseEntity<>("UnAuthorized user - ", HttpStatus.UNAUTHORIZED);
+      return new ResponseEntity<>(" Invalid username or password", HttpStatus.UNAUTHORIZED);
     }
   }
 
