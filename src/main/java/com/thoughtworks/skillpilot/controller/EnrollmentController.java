@@ -54,6 +54,16 @@ public class EnrollmentController {
     }
   }
 
+    @PatchMapping("/courses/{courseId}/completeEnrollment/{userId}")
+    public ResponseEntity<?> enrollmentComplete(@PathVariable int courseId, @PathVariable int userId) {
+        try {
+         Enrollment completedEnrollment =  enrollmentService.enrollmentCompleted(userId, courseId);
+            return new ResponseEntity<>(completedEnrollment, HttpStatus.OK);
+        } catch (EnrollmentNotFoundException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
   // get a single enrollment by its ID
   // Endpoint: GET enrollments/{enrollmentId}
   @GetMapping("/{enrollmentId}")

@@ -12,6 +12,9 @@ public interface EnrollmentService {
   public boolean unenrollLearnerFromCourse(int userId, int courseId)
       throws EnrollmentNotFoundException;
 
+  public  Enrollment enrollmentCompleted(int userId, int courseId)
+          throws EnrollmentNotFoundException;
+
   public List<Enrollment> getEnrollmentsByCourse(int courseId);
 
   public List<Enrollment> getEnrollmentsByUser(int userId);

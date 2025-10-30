@@ -88,6 +88,20 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     return true;
   }
 
+    public  Enrollment enrollmentCompleted(int userId, int courseId){
+        Enrollment enrollment =
+                enrollmentRepository
+                        .findByUser_UserIdAndCourse_CourseId(userId, courseId)
+                        .orElseThrow(
+                                () ->
+                                        new EnrollmentNotFoundException(
+                                                "Enrollment not found for userId=" + userId + ", courseId=" + courseId));
+
+        enrollment.setStatus(EnrollmentStatus.COMPLETED);
+        enrollmentRepository.save(enrollment);
+        return enrollment;
+    }
+
   // Get all active enrollments in a course
 
   @Override
